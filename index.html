@@ -1,0 +1,2651 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>佐藤医院｜トップページ</title>
+
+  <!-- Google Fonts: Noto Sans JP (wireframe指定に合わせる) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #1F3A5F;
+      --green: #29847E;
+      --cream: #FFF8F0;
+      --dcream: #EDE4D8;
+      --red: #D90C0C;
+      --dgray: #A6A1A1;
+      --gray: #D9D9D9;
+      --pink: #F2EBF7;
+      --black: #000;
+      --white: #fff;
+      --text: #111;
+      --container: 380px;
+      --shadow: 0 4px 10px rgba(0, 0, 0, .15);
+      --radius: 14px;
+    }
+
+    /* base */
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    html {
+      background: var(--gray);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: var(--gray);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    a,
+    button,
+    summary,
+    input[type="button"],
+    input[type="submit"] {
+      transition: filter .15s ease, opacity .15s ease;
+    }
+
+    a:hover,
+    button:hover,
+    summary:hover,
+    input[type="button"]:hover,
+    input[type="submit"]:hover {
+      filter: brightness(1.06);
+    }
+
+    a[href],
+    button,
+    summary,
+    input[type="button"],
+    input[type="submit"] {
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* utilities */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .55rem .9rem;
+      border-radius: 10px;
+      border: 1px solid #999;
+      background: var(--dgray);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .btn--dark {
+      background: var(--black);
+      color: var(--white);
+      border-color: #222;
+    }
+
+    .btn--outline {
+      background: transparent;
+      border-color: #333;
+    }
+
+    .btn--gray {
+      background: var(--gray);
+      color: #000;
+      border-color: #999;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .55rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid #bbb;
+      background: var(--dgray);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .section-titlebar {
+      width: min(1440px, 100%);
+      margin: 2px auto 0;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .32) 0%, rgba(255, 255, 255, 0) 45%),
+        linear-gradient(90deg, #0f1f35 0%, #1f3a5f 42%, #2f5d8e 100%);
+      color: var(--white);
+      height: 53px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      border-top: 1px solid rgba(255, 255, 255, .2);
+      border-bottom: 1px solid rgba(0, 0, 0, .25);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 6px 18px rgba(13, 27, 45, .24);
+      text-shadow: 0 3px 8px rgba(0, 0, 0, .35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-titlebar--navy {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .28) 0%, rgba(255, 255, 255, 0) 44%),
+        linear-gradient(100deg, #10243f 0%, #1f3a5f 46%, #2f6094 100%);
+    }
+
+    .section-titlebar::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -42%;
+      width: 42%;
+      height: 100%;
+      background: linear-gradient(110deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .68) 52%, rgba(255, 255, 255, 0) 100%);
+      filter: blur(.15px);
+      transform: translateX(0);
+      animation: titleShine 2.2s linear infinite;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    @keyframes titleShine {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(360%);
+      }
+    }
+
+    .placeholder {
+      background: var(--gray);
+      border: 1px solid #cfcfcf;
+      border-radius: 10px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .divider {
+      height: 1px;
+      background: #bdbdbd;
+      width: 100%;
+    }
+
+    /* header (wireframe: light gray bar, right aligned nav + buttons) */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--green);
+      border-bottom: 2px solid var(--navy);
+      min-height: 100px;
+      color: var(--white);
+    }
+
+    .site-header .container {
+      width: min(1440px, calc(100% - 20px));
+      max-width: 1440px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      height: 100px;
+      padding: 0;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 120px;
+      flex-basis: 100%;
+    }
+
+    .brand-mark {
+      width: 120px;
+      height: auto;
+      background: var(--cream);
+      object-fit: contain;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      width: 48px;
+      height: 42px;
+      margin-left: auto;
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      box-shadow: 0 4px 0 #091325, 0 8px 14px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .9);
+      color: #000;
+      order: 2;
+      margin-left: 0;
+      align-self: flex-start;
+    }
+
+    .menu-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #091325, 0 4px 10px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .85);
+    }
+
+    .menu-toggle__line {
+      display: block;
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #0f1f36;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+
+    .header-nav {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      z-index: 60;
+      width: min(520px, calc(100vw - 20px));
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 14px;
+      background: rgba(31, 58, 95, .98);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      color: #fff;
+    }
+
+    .header-nav.is-open {
+      display: flex;
+    }
+
+    .header-nav a {
+      display: block;
+      padding: .6rem .75rem;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .header-nav a:hover {
+      background: rgba(0, 0, 0, .06)
+    }
+
+    .header-nav .header-link--gray {
+      background: var(--gray);
+      color: #000;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 0;
+      margin-right: 0;
+      order: 3;
+      flex-basis: 100%;
+      justify-content: flex-start;
+    }
+
+    .header-actions .btn {
+      border: 1px solid #0f1f36;
+      border-bottom: 3px solid #091325;
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      color: #000;
+      box-shadow: 0 4px 0 #091325, 0 8px 14px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .9);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .75);
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .header-actions .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 0 #091325, 0 10px 16px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .95);
+    }
+
+    .header-actions .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #091325, 0 4px 10px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .85);
+    }
+
+    .header-actions .btn--dark {
+      background: var(--black);
+      color: var(--white);
+      border-color: #222;
+      border-bottom-color: #111;
+      box-shadow: 0 4px 0 #111, 0 8px 14px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .12);
+      text-shadow: none;
+    }
+
+    /* hero */
+    .hero {
+      position: relative;
+      margin-top: 2px;
+      margin-bottom: 6px;
+      width: 100%;
+      margin-inline: auto;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: relative;
+      min-height: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      width: 100%;
+      background: var(--pink);
+      padding: 32px 20px 120px;
+      text-align: left;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      margin: 20px auto 22px;
+      border-radius: 12px;
+      opacity: 1;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: .03em;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, .5);
+    }
+
+    .hero .tagline {
+      margin: .7rem 0 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .hero .lead {
+      margin: 0 0 1.2rem;
+      font-size: 13px;
+      max-width: 100%;
+      color: var(--navy);
+    }
+
+    .hero .lead--heading {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .hero .lead--mid {
+      margin-top: 0;
+    }
+
+    .hero .lead--indented {
+      text-indent: 1em;
+    }
+
+    /* quick-hours card in hero */
+    .quick-hours {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 620px;
+      margin: 24px 0 0;
+      background: var(--pink);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .quick-hours-board {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .quick-hours .btn,
+    .hours-card .btn {
+      position: absolute;
+      z-index: 1;
+      padding: .45rem .75rem;
+      font-size: .84rem;
+      margin: 0;
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .18);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .quick-hours .btn {
+      right: 30px;
+      bottom: 8px;
+    }
+
+    .hours-card .btn {
+      left: 760px;
+      top: 174px;
+      right: auto;
+      bottom: auto;
+      padding: .6rem .95rem;
+      font-size: 1rem;
+    }
+
+    .quick-hours .btn:hover,
+    .hours-card .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 3px 10px rgba(0, 0, 0, .2);
+    }
+
+    .quick-hours .btn:active,
+    .hours-card .btn:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 1px 6px rgba(0, 0, 0, .16);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .82rem;
+    }
+
+    .hours-table th,
+    .hours-table td {
+      border-bottom: 1px solid #e3e3e3;
+      padding: .3rem .28rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .hours-table th:first-child,
+    .hours-table td:first-child {
+      text-align: left;
+      padding-left: .2rem;
+      width: 9.5rem;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #000;
+      vertical-align: middle;
+    }
+
+    .dot--off {
+      background: #cfcfcf;
+      border: 1px solid #bdbdbd;
+    }
+
+    .quick-hours .note {
+      margin: .4rem 0 0;
+      font-size: .72rem;
+      color: #222;
+    }
+
+    /* sections */
+    main {
+      background: var(--navy)
+    }
+
+    section {
+      width: min(1440px, 100%);
+      margin-inline: auto;
+      background: var(--cream)
+    }
+
+    .section-wrap {
+      padding: 0 0 68px
+    }
+
+    .section-body {
+      padding: 36px 0 0
+    }
+
+    /* hours section */
+    .hours-section {
+      width: 100%;
+      height: auto;
+      margin-inline: auto;
+      background: var(--cream);
+      border-top: 1px solid #cfcfcf;
+      border-bottom: 1px solid #cfcfcf;
+      box-shadow: inset 0 -4px 0 var(--navy);
+    }
+
+    .hours-section.section-wrap {
+      padding-bottom: 0;
+    }
+
+    .hours-section .section-titlebar {
+      margin-top: 2px
+    }
+
+    .hours-section .section-body {
+      height: calc(100% - 53px);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hours-sub {
+      text-align: center;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 28px;
+      margin: 0 0 22px;
+    }
+
+    .hours-card {
+      width: 100%;
+      margin: 0 auto;
+      border: none;
+      border-radius: 0;
+      background: var(--cream);
+      padding: 18px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: center;
+      box-shadow: none;
+    }
+
+    .hours-meta {
+      font-size: .95rem;
+      color: #222;
+      text-align: right;
+      min-width: 260px;
+      line-height: 1.55;
+    }
+
+    .hours-note {
+      grid-column: 1 / -1;
+      margin: 8px 0 0;
+      font-size: .9rem;
+      color: var(--red);
+    }
+
+    .hours-board {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      border: none;
+    }
+
+    /* news section */
+    .news-section {
+      width: 100%;
+      height: auto;
+      background: var(--cream);
+      border: 2px solid #b8b8b8;
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, .16), inset 0 -2px 5px rgba(255, 255, 255, .75);
+      position: relative;
+    }
+
+    .news-section .news-pill-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .news-section .pill[aria-label="ニュース"] {
+      background: var(--dcream);
+      width: 192px;
+      height: 76px;
+      border-radius: 0;
+      padding: 0;
+      color: var(--navy);
+      font-size: 3rem;
+      line-height: 1;
+      letter-spacing: .04em;
+      border: 1px solid #b7ac9b;
+      box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -2px 4px rgba(255, 255, 255, .6);
+    }
+
+    .news-section .pill[aria-label="ニュース"] .news-text {
+      display: inline-block;
+      animation: news-text-pulse 1.4s ease-in-out infinite;
+    }
+
+    .news-section .news-list {
+      margin-top: 56px;
+    }
+
+    @keyframes news-text-pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.06);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .news-section .pill[aria-label="ニュース"] .news-text {
+        animation: none;
+      }
+    }
+
+    .news-content {
+      height: calc(100% - 53px - 40px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .news-list {
+      width: 100%;
+      margin: 20px auto 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .news-section .section-body {
+      padding: 0;
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .news-item {
+      background: var(--white);
+      border: 1px solid #bdbdbd;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 1.28rem;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .news-item time {
+      font-variant-numeric: tabular-nums;
+      color: #333;
+      min-width: 96px;
+    }
+
+    .news-footer-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: min(1440px, 100%);
+      height: 40px;
+      margin: 0 auto;
+      background: var(--navy);
+    }
+
+    .news-more {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .news-more a {
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      padding: .4rem .8rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .18);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+      font-weight: 500;
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .news-more a:hover {
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 3px 10px rgba(0, 0, 0, .2);
+    }
+
+    .news-more a:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 1px 6px rgba(0, 0, 0, .16);
+    }
+
+    .news-more a[aria-disabled="true"] {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    /* director message */
+    .message-section {
+      width: 100%;
+      height: auto;
+      margin-inline: auto;
+      padding: 28px 0;
+      background: var(--cream);
+      border-bottom: 1px solid #e8e8e8;
+      box-shadow: inset 0 -4px 0 var(--navy);
+    }
+
+    .message-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .message-grid>div {
+      position: relative;
+      left: auto;
+      top: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .message-title {
+      font-size: 24px;
+      margin: 0 0 16px;
+      font-weight: 700;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, .28);
+    }
+
+    .message-body {
+      font-size: 13px;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .message-body p {
+      margin: 0 0 14px;
+    }
+
+    .message-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .message-body__indent {
+      text-indent: 1em;
+    }
+
+    .message-body .message-intro {
+      font-size: 16px;
+    }
+
+    .message-paragraph-y {
+      margin-top: 0;
+      text-indent: 1em;
+    }
+
+    .message-line-offset {
+      display: block;
+      margin-top: 1em;
+      text-indent: 1em;
+    }
+
+    .message-sign {
+      margin-top: 18px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .message-photo {
+      position: relative;
+      top: 0;
+      align-self: start;
+      height: auto;
+      max-width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    /* services */
+    .services-section {
+      min-height: auto;
+      background: var(--cream);
+      border-top: 1px solid #cfcfcf;
+      border-bottom: 1px solid #cfcfcf;
+      position: relative;
+      padding-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .services-section .container {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transform: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .services-lead {
+      margin: 0 0 16px;
+      font-weight: 700;
+      text-indent: 0;
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .services-grid-wrap {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .services-grid--panel {
+      width: 100%;
+      transition: transform .45s ease;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .services-grid--panel.is-current {
+      position: relative;
+      z-index: 1;
+    }
+
+    .services-grid--panel.is-next {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      transform: translate3d(100%, 0, 0);
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid #dcdcdc;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+    }
+
+    .service-media {
+      height: 170px;
+      background: var(--gray);
+      border-bottom: 1px solid #dcdcdc;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .service-title {
+      margin: 10px 10px 0;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 10px;
+      padding: .35rem .6rem;
+      font-size: 1.05rem;
+      display: inline-block;
+      width: calc(100% - 20px);
+      text-align: center;
+    }
+
+    .service-text {
+      margin: 0;
+      padding: 12px 12px 14px;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: left;
+      text-justify: none;
+      color: #222;
+      flex: 1;
+      text-indent: 0;
+    }
+
+    .services-footer-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      width: min(1440px, 100%);
+      height: 36px;
+      margin: 0 auto;
+      background: var(--navy);
+      z-index: 1;
+    }
+
+    .services-more {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .services-more a {
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      padding: .32rem .85rem;
+      font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .22);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .services-more a:hover {
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 3px 10px rgba(0, 0, 0, .24);
+    }
+
+    .services-more a:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 1px 6px rgba(0, 0, 0, .18);
+    }
+
+    /* about */
+    .about-section {
+      min-height: auto;
+      background: var(--cream);
+      padding-bottom: 52px;
+      border-bottom: 1px solid #e8e8e8;
+      box-shadow: inset 0 -4px 0 var(--navy);
+      position: relative;
+    }
+
+    .about-lead {
+      margin: 26px auto 16px;
+      width: 100%;
+      min-height: auto;
+      max-width: 100%;
+      font-weight: 700;
+      text-indent: 0;
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .slider {
+      background: var(--gray);
+      border: 1px solid #cfcfcf;
+      width: 100%;
+      height: 240px;
+      margin: 16px auto 0;
+      max-width: 100%;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+      top: 0;
+      overflow: hidden;
+    }
+
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      z-index: 2;
+    }
+
+    .slider-controls a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      padding: .08rem .55rem;
+      font-size: .9rem;
+      font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 3px 0 #0f1f36, 0 8px 14px rgba(0, 0, 0, .22);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .slider-controls a:hover {
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 4px 0 #0f1f36, 0 10px 16px rgba(0, 0, 0, .24);
+    }
+
+    .slider-controls a:active {
+      transform: translateY(2px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 1px 0 #0f1f36, 0 4px 8px rgba(0, 0, 0, .18);
+    }
+
+    .slider-controls a[data-slider-action="next"] {
+      background: linear-gradient(180deg, #4f86ff 0%, #2358cf 100%);
+      border-color: #1b3f94;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+    }
+
+    .slider-controls a.is-disabled {
+      background: var(--gray);
+      color: #8c8c8c;
+      box-shadow: none;
+      text-shadow: none;
+    }
+
+    .about-footer-bar {
+      position: relative;
+      top: -1px;
+      width: 1200px;
+      max-width: 100%;
+      margin: 0 auto;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 0 0 10px 10px;
+      z-index: 1;
+    }
+
+    /* staff */
+    .staff-section {
+      background: var(--cream);
+      padding-bottom: 0;
+      padding-top: 0;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .staff-section .container {
+      padding-top: 0;
+      padding-bottom: 52px;
+    }
+
+    .staff-lead {
+      margin: 26px auto 16px;
+      width: 100%;
+      max-width: 100%;
+      color: var(--navy);
+      font-weight: 700;
+      text-indent: 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .staff-list {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .staff-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      position: relative;
+      height: auto;
+      min-height: auto;
+      border-radius: 10px;
+      border: 1px solid #e2e2e2;
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+
+    .staff-card>div {
+      min-width: 0;
+      width: 100%;
+      align-self: start;
+      margin-top: 2px;
+    }
+
+    .staff-photo {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      border-radius: 8px;
+      background: var(--gray);
+      border: 1px solid #cfcfcf;
+      object-fit: cover;
+      align-self: center;
+      justify-self: center;
+    }
+
+    .staff-name {
+      margin: 0 0 0.5em;
+      font-size: 18px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .staff-desc {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      color: #000;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .staff-card .btn {
+      position: absolute;
+      right: 12px;
+      bottom: 8px;
+      padding: .3rem .9rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 2px 8px rgba(0, 0, 0, .18);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .staff-card .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 3px 10px rgba(0, 0, 0, .2);
+    }
+
+    .staff-card .btn:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 1px 6px rgba(0, 0, 0, .16);
+    }
+
+    .career-tooltip-btn {
+      position: absolute;
+    }
+
+    .career-tooltip-btn::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 0;
+      bottom: calc(100% + 10px);
+      width: max-content;
+      max-width: min(92vw, 560px);
+      white-space: normal;
+      word-break: break-word;
+      padding: 10px 12px;
+      color: #000;
+      background: #fff;
+      border-radius: 8px;
+      font-size: .95rem;
+      line-height: 1.5;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: opacity .18s ease, transform .18s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .career-tooltip-btn::before {
+      content: "";
+      position: absolute;
+      right: 18px;
+      bottom: calc(100% + 2px);
+      border: 8px solid transparent;
+      border-top-color: var(--cream);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: opacity .18s ease, transform .18s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .career-tooltip-btn.is-open::after,
+    .career-tooltip-btn.is-open::before {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* access */
+    .access-section {
+      min-height: auto;
+      background: var(--cream);
+      border-top: 2px solid var(--navy);
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .access-section .section-titlebar {
+      margin-top: 2px;
+    }
+
+    .access-section .container {
+      padding-top: 52px;
+      padding-bottom: 52px;
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 0 auto;
+      align-items: start;
+      width: 100%;
+    }
+
+    .map-box {
+      width: 100%;
+      height: 280px;
+      margin-left: 0;
+      border: 2px solid #9aa7d6;
+      border-radius: 0;
+      max-width: 100%;
+    }
+
+    .access-panel {
+      padding: 18px 18px 14px;
+      border-radius: 10px;
+      background: var(--cream);
+      width: fit-content;
+      max-width: 100%;
+      justify-self: start;
+    }
+
+    .access-panel h2 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 1.1rem;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .access-panel h2:not(:first-of-type) {
+      margin-top: 42px;
+    }
+
+    .access-panel h3 {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    /* footer */
+    footer.site-footer {
+      background: var(--green);
+      border-top: 1px solid #cfcfcf;
+      color: var(--white);
+    }
+
+    .footer-main {
+      padding: 18px 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-mark {
+      width: 160px;
+      height: auto;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .footer-social {
+      display: flex;
+      width: 216px;
+      justify-content: space-between;
+      gap: 0;
+      margin-top: 10px;
+    }
+
+    .footer-social img {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      opacity: .85;
+      border-radius: 4px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      align-content: start;
+      margin-top: 12px;
+      margin-left: 24px;
+      font-size: .95rem;
+    }
+
+    .footer-links a {
+      display: block;
+      opacity: .95;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      text-decoration: underline
+    }
+
+    .footer-banner {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 861 / 213;
+      height: auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--green) url('img/openingBoard.png') center / cover no-repeat;
+      margin-top: 12px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .footer-banner .btn {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      margin: 0;
+      border: 1px solid #0f1f36;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
+      color: #000;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .18);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+      transition: transform .08s ease, box-shadow .08s ease;
+      transform: translate(calc(-50% + 20rem - 5px), calc(74% + 1px));
+    }
+
+    .footer-banner .btn:hover {
+      transform: translate(calc(-50% + 20rem), calc(74% - 1px));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 3px 10px rgba(0, 0, 0, .2);
+    }
+
+    .footer-banner .btn:active {
+      transform: translate(calc(-50% + 20rem), calc(74% + 2px));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 1px 6px rgba(0, 0, 0, .16);
+    }
+
+    .footer-bottom {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      font-size: .85rem;
+      padding: 10px 0;
+    }
+
+    .copyright-symbol {
+      font-size: 2em;
+      line-height: 1;
+      vertical-align: baseline;
+      color: #fff;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 44px;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 28px;
+    }
+
+    h3 {
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    .header-nav a {
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    /* responsive */
+    @media (max-width: 980px) {
+      header.site-header {
+        position: static;
+        min-height: auto;
+      }
+
+      .header-inner {
+        height: auto;
+        padding: 10px 0 12px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        width: min(240px, 62vw);
+        height: auto;
+      }
+
+      .header-actions {
+        margin: 0;
+      }
+
+      .hero,
+      .hours-section,
+      .news-section,
+      .message-section,
+      .services-section,
+      .about-section {
+        min-height: auto;
+      }
+
+      .message-section {
+        height: auto;
+        padding: 28px 0 36px;
+      }
+
+      .message-grid {
+        grid-template-columns: 1fr
+      }
+
+      .message-grid>div {
+        position: static;
+        left: auto;
+        top: auto;
+        width: auto;
+        height: auto;
+      }
+
+      .message-body {
+        position: static;
+        left: auto;
+        top: auto;
+        width: auto;
+        height: auto;
+      }
+
+      .message-photo {
+        position: static;
+        top: auto;
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        object-fit: contain;
+        margin: 10px auto 0;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .services-section .container {
+        justify-content: flex-start;
+        transform: none;
+      }
+
+      .about-lead,
+      .staff-lead {
+        margin: 40px auto 18px;
+      }
+
+      .slider {
+        margin-top: 24px;
+        height: min(56vw, 420px);
+      }
+
+      .about-footer-bar {
+        height: 36px;
+      }
+
+      .staff-card {
+        grid-template-columns: 1fr;
+        text-align: left;
+        height: auto;
+        min-height: 220px;
+      }
+
+      .staff-name {
+        font-size: 24px;
+      }
+
+      .staff-desc {
+        font-size: 18px;
+      }
+
+      .staff-photo {
+        width: 100%;
+        height: auto;
+        max-height: 360px;
+        border-radius: 18px;
+        object-fit: contain;
+        background: #f4f4f4;
+      }
+
+      .access-section .container {
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+
+      .access-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+
+      .map-box {
+        width: 100%;
+        height: min(60vw, 380px);
+      }
+
+      .access-panel {
+        width: 100%;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr
+      }
+
+      .footer-brand {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        margin-left: 0;
+      }
+
+      .footer-banner {
+        width: 100%;
+        margin-top: 8px;
+      }
+
+      .footer-banner .btn {
+        transform: translate(-50%, 74%);
+      }
+
+      .footer-banner .btn:hover {
+        transform: translate(-50%, calc(74% - 1px));
+      }
+
+      .footer-banner .btn:active {
+        transform: translate(-50%, calc(74% + 2px));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .header-inner {
+        padding: 8px 0 10px;
+      }
+
+      .header-nav {
+        width: 100%;
+      }
+
+      .header-nav a {
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .header-actions .btn {
+        font-size: .86rem;
+        padding: .42rem .65rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero h1 {
+        font-size: 2rem
+      }
+
+      .section-titlebar {
+        font-size: 1.55rem
+      }
+
+      .services-lead,
+      .about-lead,
+      .staff-lead,
+      .service-text,
+      .message-body p,
+      .access-panel h3 {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .staff-name {
+        font-size: 20px;
+      }
+
+      .slider-controls a {
+        font-size: .78rem;
+      }
+
+      .footer-social img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .footer-bottom {
+        font-size: .78rem;
+      }
+    }
+
+    @media (max-width: 430px) {
+      html,
+      body {
+        overflow-x: auto;
+      }
+
+      body {
+        width: var(--container);
+        min-width: var(--container);
+        margin: 0 auto;
+      }
+
+      .container {
+        width: var(--container);
+        max-width: var(--container);
+      }
+
+      .site-header .container {
+        width: var(--container);
+        max-width: var(--container);
+      }
+
+      .hero-content {
+        padding: 26px 14px 30px;
+      }
+
+      .hero h1 {
+        font-size: 1.78rem;
+      }
+
+      .hero-image {
+        margin: 16px auto 18px;
+      }
+
+      .hero .lead,
+      .services-lead,
+      .about-lead,
+      .staff-lead,
+      .service-text,
+      .message-body p,
+      .access-panel h3 {
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .message-photo {
+        max-width: 360px;
+      }
+
+      .section-titlebar {
+        font-size: 1.4rem;
+        letter-spacing: .02em;
+      }
+
+      .services-footer-bar,
+      .about-footer-bar {
+        height: 34px;
+      }
+
+      .staff-photo {
+        height: auto;
+        max-height: 320px;
+      }
+
+      .slider {
+        height: 54vw;
+      }
+
+      .slider-controls {
+        gap: 8px;
+      }
+
+      .slider-controls a {
+        padding: .06rem .46rem;
+        font-size: .72rem;
+      }
+
+      .map-box {
+        height: 260px;
+      }
+
+      .footer-banner .btn {
+        font-size: .9rem;
+        padding: .4rem .75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="header-nav">
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="sr-only">メニューを開く</span>
+      </button>
+
+      <a class="brand" href="#top" aria-label="佐藤医院 トップ">
+        <img class="brand-mark" src="img/logo/logo.png" alt="佐藤医院ロゴ">
+        <span class="sr-only">佐藤医院</span>
+      </a>
+
+      <span class="header-actions">
+        <a class="btn btn--gray" href="dummy.html#reservation-section" aria-label="Web予約">Web予約</a>
+        <a class="btn btn--dark" href="#" lang="en" aria-label="English">ENGLISH</a>
+      </span>
+
+      <nav class="header-nav" id="header-nav" aria-label="グローバルナビゲーション">
+        <a class="header-link--gray" href="#about">当院について</a>
+        <a href="#news">お知らせ</a>
+        <a href="#services">診療内容</a>
+        <a href="#staff">スタッフ紹介</a>
+        <a href="#hours">診療時間</a>
+        <a href="#access">所在地</a>
+        <a href="#contact">お問合せ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ファーストビュー -->
+    <section class="hero" aria-label="ファーストビュー">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <h1>佐藤医院</h1>
+        <p class="tagline">「地域に根ざした医療」をモットーに</p>
+        <img class="hero-image" src="img/hospital_Image.png" alt="病院外観">
+
+        <!-- ※本文は仕様書の文面を流用（改変なし） -->
+        <h3 class="lead lead--mid lead--heading">患者様とともに歩む未来</h3>
+        <p class="lead lead--indented">
+          佐藤医院では、患者様の健康を第一に考え、今後も安心・安全な医療を提供し続けます。どんな小さな悩みでも、お気軽にご相談ください。私たちがしっかりとサポートさせていただきます。地域の皆様とともに、より健康で豊かな生活を築いていきたいと考えています。<br><br>
+          佐藤医院のスタッフ一同、皆様のご来院を心よりお待ちしております。
+        </p>
+
+        <div class="quick-hours" aria-label="診療時間（クイック表示）">
+          <img class="quick-hours-board" src="img/openingBoard1.png" alt="診療時間のご案内">
+          <a class="btn" href="dummy.html#reservation-section" aria-label="Web予約へ">Web予約</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 診療時間 -->
+    <section id="hours" class="hours-section section-wrap">
+      <h1 class="section-titlebar">診療時間</h1>
+
+      <div class="container section-body">
+        <h2 class="hours-sub">患者様中心の医療を提供</h2>
+
+        <div class="hours-card" role="group" aria-label="診療時間（詳細）">
+          <img class="hours-board" src="img/openingBoard.jpg" alt="診療時間のご案内">
+          <a class="btn" href="dummy.html#reservation-section" aria-label="Web予約へ">Web予約</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- お知らせ -->
+    <section id="news" class="news-section section-wrap">
+      <h1 class="section-titlebar">お知らせ</h1>
+
+      <div class="news-content">
+        <div class="news-pill-wrap">
+          <span class="pill" aria-label="ニュース"><span class="news-text">News</span></span>
+        </div>
+
+        <div class="container section-body">
+          <ul class="news-list" aria-label="お知らせ一覧（最新5件）">
+            <li><a class="news-item" href="dummy.html#news-01"><time
+                  datetime="2025-01-01">YY/MM/DD</time><span>インフルエンザ予防接種について</span></a></li>
+            <li><a class="news-item" href="dummy.html#news-02"><time
+                  datetime="2025-01-01">YY/MM/DD</time><span>年末年始の休診について</span></a></li>
+            <li><a class="news-item" href="dummy.html#news-03"><time
+                  datetime="2025-01-01">YY/MM/DD</time><span>健康診断のご案内</span></a></li>
+            <li><a class="news-item" href="dummy.html#news-04"><time
+                  datetime="2025-01-01">YY/MM/DD</time><span>新型コロナウイルス対策について</span></a></li>
+            <li><a class="news-item" href="dummy.html#news-online"><time
+                  datetime="2025-01-01">YY/MM/DD</time><span>オンライン診療の導入について</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="news-footer-bar" aria-hidden="true">
+        <div class="news-more">
+          <a href="dummy.html#news-list-section" aria-label="お知らせ一覧へ">お知らせ一覧へ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 院長挨拶 -->
+    <section id="message" class="message-section">
+      <div class="container">
+        <div class="message-grid">
+          <div>
+            <h2 class="message-title">院長挨拶</h2>
+
+            <div class="message-body">
+              <p class="message-body__indent message-intro">こんにちは。佐藤医院の院長、佐藤太郎と申します。<br>当院のホームページをご覧いただき、ありがとうございます。</p>
+
+              <p class="message-body__indent message-paragraph-y">
+                佐藤医院では、「地域に根ざした医療」をモットーに、<br>患者様一人ひとりに寄り添った医療を提供することを目指しております。<span
+                  class="message-line-offset">日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。</span>
+              </p>
+
+              <p class="message-body__indent">
+                私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。<span
+                  class="message-line-offset">また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。どんな小さな不調でも、どうぞお気軽にご相談ください。</span>
+              </p>
+
+              <p>これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。</p>
+
+              <p class="message-sign">佐藤医院　院長　佐藤 太郎</p>
+            </div>
+          </div>
+
+          <img class="message-photo" src="img/doctor_image/doctor_intro.png" alt="院長 佐藤 太郎の写真">
+        </div>
+      </div>
+    </section>
+
+    <!-- 診療内容 -->
+    <section id="services" class="services-section">
+      <h1 class="section-titlebar section-titlebar--navy">診療内容</h1>
+
+      <div class="container">
+        <h2 class="services-lead">
+          当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。
+        </h2>
+
+        <div class="services-grid-wrap">
+          <div class="services-grid services-grid--panel is-current" aria-label="診療内容（4項目）">
+          <article class="service-card">
+            <img class="service-media" src="img/Patient_Image/card1Img.png" alt="一般内科診療のイメージ">
+            <h3 class="service-title">一般内科診療</h3>
+            <p class="service-text">
+              風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。
+            </p>
+          </article>
+
+          <article class="service-card">
+            <img class="service-media" src="img/Patient_Image/card2Img.png" alt="生活習慣病の診断・治療のイメージ">
+            <h3 class="service-title">生活習慣病の診断・治療</h3>
+            <p class="service-text">
+              高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。
+            </p>
+          </article>
+
+          <article class="service-card">
+            <img class="service-media" src="img/Patient_Image/patient_4 1.png" alt="消化器系の診察のイメージ">
+            <h3 class="service-title">消化器系の診察</h3>
+            <p class="service-text">
+              胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。
+            </p>
+          </article>
+
+          <article class="service-card">
+            <img class="service-media" src="img/Patient_Image/patient_6 1.png" alt="呼吸器系の診察のイメージ">
+            <h3 class="service-title">呼吸器系の診察</h3>
+            <p class="service-text">
+              咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。
+            </p>
+          </article>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="services-footer-bar" aria-hidden="true">
+        <div class="services-more">
+          <a href="#" aria-label="診療内容を詳しく">詳しく</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 当院について -->
+    <section id="about" class="about-section">
+      <h1 class="section-titlebar">当医院について</h1>
+
+      <div class="container">
+        <h2 class="about-lead">
+          佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
+        </h2>
+
+        <div class="slider" aria-label="院内の様子（スライダー）">
+          <img id="about-slider-image" src="img/Hospital_Exterior/hospital_4.jpg" alt="院内の様子 1">
+        </div>
+
+        <div class="about-footer-bar" aria-hidden="true">
+          <div class="slider-controls" aria-label="スライダー操作">
+            <a href="#" data-slider-action="prev" aria-label="前の画像">◀️ 前へ</a>
+            <a href="#" data-slider-action="next" aria-label="次の画像">次へ ▶️</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section id="staff" class="staff-section">
+      <h1 class="section-titlebar">スタッフ紹介</h1>
+
+      <div class="container">
+        <h2 class="staff-lead">
+          皆様に安心してご来院いただけるよう、私たちスタッフ一同、誠心誠意対応いたします。それぞれの専門性と温かさを活かし、皆様の健康を支えるパートナーとしてお力になれるよう努めてまいります。
+        </h2>
+
+        <div class="staff-list" aria-label="スタッフ一覧">
+          <article class="staff-card">
+            <img class="staff-photo" src="img/doctor_image/sato_taro.png" alt="院長 佐藤 太郎の写真">
+            <div>
+              <h2 class="staff-name">院長　佐藤 太郎</h2>
+              <h3 class="staff-desc">専門分野： 生活習慣病、呼吸器疾患、内科全般<br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
+              </h3>
+            </div>
+            <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="院長の経歴"
+              data-tooltip="経歴： 光明大学医学部卒業後、瑞穂中央総合病院で内科医として10 年間勤務。">経歴</a>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-photo" src="img/doctor_image/suzuki_mari.png" alt="看護部長 鈴木 真理の写真">
+            <div>
+              <h2 class="staff-name">看護部長　鈴木 真理</h2>
+              <h3 class="staff-desc">得意分野： 親身な対応、注射・採血技術、健康管理指導<br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。
+              </h3>
+            </div>
+            <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="看護部長の経歴"
+              data-tooltip="経歴： 白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携 わりたい思いから、佐藤内科医院に入職。">経歴</a>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-photo" src="img/doctor_image/takahashi_yumi.png" alt="臨床検査技師 高橋 由美の写真">
+            <div>
+              <h2 class="staff-name">臨床検査技師　高橋 由美</h2>
+              <h3 class="staff-desc">得意分野： 血液検査、心電図検査、超音波検査<br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。
+              </h3>
+            </div>
+            <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="臨床検査技師の経歴"
+              data-tooltip="経歴： 東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15 年 間の臨床検査技師としての経験を積む。">経歴</a>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-photo" src="img/doctor_image/yamamoto_hana.png" alt="医療事務 山本 花の写真">
+            <div>
+              <h2 class="staff-name">医療事務　山本 花</h2>
+              <h3 class="staff-desc">得意分野： 受付業務、カルテ管理、医療費計算<br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。
+              </h3>
+            </div>
+            <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="医療事務の経歴"
+              data-tooltip="経歴： 希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。">経歴</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- アクセス -->
+    <section id="access" class="access-section">
+      <h1 class="section-titlebar">アクセス</h1>
+
+      <div class="container">
+        <div class="access-grid">
+          <img class="map-box" src="img/map.jpg" alt="Googleマップ">
+
+          <div class="access-panel" id="contact">
+            <h2>アクセス</h2>
+            <h3>最寄駅: JR 上野より徒歩5 分<br>当院専用の無料駐車場10 台分あり</h3>
+            <h3>ご来院の際は、交通状況にご注意ください。<br>最寄駅から徒歩5 分の距離にあり、便利な立地です。</h3>
+
+            <h2>所在地・住所</h2>
+            <h3>〒123-4567<br>東京都台東区上野0 丁目 0 - 0</h3>
+
+            <h2>お問合せ</h2>
+            <h3>電話番号: 00-0000-0000<br>ファックス: 00-0000-0000<br>E メール: info@sato-clinic-test.jp</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="フッター">
+    <div class="container footer-main">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo-block">
+            <img class="footer-mark" src="img/logo/logo.png" alt="佐藤医院ロゴ">
+            <div class="footer-social" aria-label="SNSアイコン">
+              <img src="img/Logo/icon1.png" alt="Xアイコン">
+              <img src="img/Logo/icon2.png" alt="Instagramアイコン">
+              <img src="img/Logo/icon3.png" alt="YouTubeアイコン">
+              <img src="img/Logo/icon4.png" alt="lnアイコン">
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:700; font-size:1.1rem; margin-left: 24px;">サイトメニュー</div>
+            <nav class="footer-links" aria-label="フッターリンク">
+              <a href="#top">トップページ</a>
+              <a href="#news">お知らせ</a>
+              <a href="#message">院長の挨拶</a>
+              <a href="#about">当院について</a>
+              <a href="#services">診療内容</a>
+              <a href="#staff">スタッフ紹介</a>
+              <a href="#access">アクセス</a>
+              <a href="#contact">お問合せ</a>
+              <a href="dummy.html#faq-section" aria-label="FAQページへ">FAQ</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-banner">
+          <a class="btn" href="dummy.html#reservation-section" aria-label="Web予約へ">Web予約</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="footer-bottom"><span class="copyright-symbol">©︎</span> Sato Clinic</div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('header-nav');
+      if (!toggle || !menu) return;
+
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        menu.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+
+      toggle.addEventListener('click', function () {
+        if (menu.classList.contains('is-open')) {
+          closeMenu();
+          return;
+        }
+        openMenu();
+      });
+
+      menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(event.target) || toggle.contains(event.target)) return;
+        closeMenu();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+    })();
+
+    (function () {
+      const sliderImage = document.getElementById('about-slider-image');
+      const controls = document.querySelectorAll('[data-slider-action]');
+      if (!sliderImage || controls.length === 0) return;
+
+      let index = 1;
+      const min = 1;
+      const max = 8;
+
+      function updateImage() {
+        sliderImage.src = 'img/Hospital_Exterior/hospital_' + index + '.jpg';
+        sliderImage.alt = '院内の様子 ' + index;
+      }
+
+      controls.forEach(function (control) {
+        control.addEventListener('click', function (event) {
+          event.preventDefault();
+          const action = control.getAttribute('data-slider-action');
+          if (action === 'next') {
+            index = index >= max ? min : index + 1;
+          } else {
+            index = index <= min ? max : index - 1;
+          }
+          updateImage();
+        });
+      });
+    })();
+
+    (function () {
+      const buttons = document.querySelectorAll('.js-career-tooltip');
+      if (buttons.length === 0) return;
+
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          const isOpen = button.classList.contains('is-open');
+          buttons.forEach(function (other) {
+            other.classList.remove('is-open');
+          });
+          if (!isOpen) {
+            button.classList.add('is-open');
+          }
+        });
+      });
+
+      document.addEventListener('click', function (event) {
+        buttons.forEach(function (button) {
+          if (!button.contains(event.target)) {
+            button.classList.remove('is-open');
+          }
+        });
+      });
+    })();
+
+    (function () {
+      const newsList = document.querySelector('.news-list');
+      const trigger = document.querySelector('.news-more a[aria-label="お知らせ一覧へ"]');
+      if (!newsList || !trigger) return;
+
+      let isSliding = false;
+      let cycleNewsPromise;
+      let nextNewsIndex = 0;
+
+      function buildNewsListItem(data) {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        const time = document.createElement('time');
+        const title = document.createElement('span');
+
+        link.className = 'news-item';
+        link.href = data.href;
+        time.dateTime = '2025-01-01';
+        time.textContent = data.date;
+        title.textContent = data.title;
+
+        link.appendChild(time);
+        link.appendChild(title);
+        li.appendChild(link);
+        return li;
+      }
+
+      function toNewsData(link) {
+        const timeNode = link.querySelector('time');
+        const titleNode = link.querySelector('span');
+        return {
+          date: timeNode ? timeNode.textContent.trim() : 'YY/MM/DD',
+          title: titleNode ? titleNode.textContent.trim() : '',
+          href: link.getAttribute('href') || '#'
+        };
+      }
+
+      function getCycleNewsData() {
+        if (cycleNewsPromise) return cycleNewsPromise;
+
+        const currentTopItems = Array.from(newsList.querySelectorAll('li > a.news-item'))
+          .map(function (link) {
+            return toNewsData(link);
+          })
+          .filter(function (item) {
+            return item.title !== 'インフルエンザ予防接種について';
+          });
+
+        cycleNewsPromise = fetch('dummy.html', { cache: 'no-store' })
+          .then(function (response) {
+            if (!response.ok) throw new Error('failed to load dummy');
+            return response.text();
+          })
+          .then(function (html) {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const extras = Array.from(
+              doc.querySelectorAll('#news-list-section details[id^="news-"]')
+            )
+              .map(function (section) {
+                const head = section.querySelector('.news-head');
+                if (!head) return null;
+                const dateNode = head.querySelector('.news-date');
+                const dateText = dateNode ? dateNode.textContent.trim() : 'YY/MM/DD';
+                const titleText = head.textContent.replace(dateText, '').trim();
+                if (!/^お知らせ/.test(titleText)) return null;
+                return {
+                  date: dateText || 'YY/MM/DD',
+                  title: titleText,
+                  href: 'dummy.html#' + section.id
+                };
+              })
+              .filter(function (item) {
+                return Boolean(item);
+              });
+            if (extras.length === 0) throw new Error('extra news not found');
+            const cycle = currentTopItems.concat(extras);
+            nextNewsIndex = currentTopItems.length;
+            return cycle;
+          })
+          .catch(function () {
+            const fallbackExtras = [
+              { date: 'YY/MM/DD', title: 'お知らせ α', href: 'dummy.html#news-alpha' },
+              { date: 'YY/MM/DD', title: 'お知らせ β', href: 'dummy.html#news-beta' },
+              { date: 'YY/MM/DD', title: 'お知らせ γ', href: 'dummy.html#news-gamma' },
+              { date: 'YY/MM/DD', title: 'お知らせ ε', href: 'dummy.html#news-epsilon' }
+            ];
+            const cycle = currentTopItems.concat(fallbackExtras);
+            nextNewsIndex = currentTopItems.length;
+            return cycle;
+          });
+        return cycleNewsPromise;
+      }
+
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (isSliding) return;
+
+        const firstItem = newsList.querySelector('li');
+        if (!firstItem) return;
+
+        isSliding = true;
+        trigger.setAttribute('aria-disabled', 'true');
+
+        getCycleNewsData().then(function (newsItems) {
+          const nextData = newsItems[nextNewsIndex % newsItems.length];
+          nextNewsIndex += 1;
+          const nextItem = buildNewsListItem(nextData);
+          newsList.appendChild(nextItem);
+          firstItem.remove();
+          trigger.removeAttribute('aria-disabled');
+          isSliding = false;
+        });
+      });
+    })();
+
+    (function () {
+      const gridWrap = document.querySelector('#services .services-grid-wrap');
+      const trigger = document.querySelector('.services-more a[aria-label="診療内容を詳しく"]');
+      if (!gridWrap || !trigger) return;
+
+      let activePanel = gridWrap.querySelector('.services-grid--panel');
+      if (!activePanel) return;
+
+      let isSliding = false;
+      let currentStart = 0;
+      let servicesPromise;
+      let preloadPromise;
+      let assetsReady = false;
+
+      function setTriggerEnabled(enabled) {
+        if (enabled) {
+          trigger.removeAttribute('aria-disabled');
+          trigger.style.pointerEvents = '';
+          trigger.style.opacity = '';
+          return;
+        }
+        trigger.setAttribute('aria-disabled', 'true');
+        trigger.style.pointerEvents = 'none';
+        trigger.style.opacity = '.65';
+      }
+
+      function syncWrapHeight(panel) {
+        const h = panel.getBoundingClientRect().height;
+        if (h > 0) {
+          gridWrap.style.minHeight = h + 'px';
+        }
+      }
+
+      function toServiceData(card) {
+        const image = card.querySelector('.service-media');
+        const title = card.querySelector('.service-title');
+        const text = card.querySelector('.service-text');
+        return {
+          imageSrc: image ? image.getAttribute('src') || '' : '',
+          imageAlt: image ? image.getAttribute('alt') || '' : '',
+          title: title ? title.textContent.trim() : '',
+          text: text ? text.textContent.trim() : ''
+        };
+      }
+
+      function buildServiceCard(data) {
+        const article = document.createElement('article');
+        article.className = 'service-card';
+
+        const img = document.createElement('img');
+        img.className = 'service-media';
+        img.src = data.imageSrc;
+        img.alt = data.imageAlt || (data.title ? data.title + 'のイメージ' : '診療内容のイメージ');
+
+        const h3 = document.createElement('h3');
+        h3.className = 'service-title';
+        h3.textContent = data.title;
+
+        const p = document.createElement('p');
+        p.className = 'service-text';
+        p.textContent = data.text;
+
+        article.appendChild(img);
+        article.appendChild(h3);
+        article.appendChild(p);
+        return article;
+      }
+
+      function buildPanel(items) {
+        const panel = document.createElement('div');
+        panel.className = 'services-grid services-grid--panel is-next';
+        panel.setAttribute('aria-label', '診療内容（4項目）');
+        items.forEach(function (item) {
+          panel.appendChild(buildServiceCard(item));
+        });
+        return panel;
+      }
+
+      function pickWindow(items, startIndex, size) {
+        const windowItems = [];
+        for (let i = 0; i < size; i += 1) {
+          windowItems.push(items[(startIndex + i) % items.length]);
+        }
+        return windowItems;
+      }
+
+      function loadServices() {
+        if (preloadPromise) return preloadPromise;
+        if (servicesPromise) return servicesPromise;
+
+        const topItems = Array.from(
+          activePanel.querySelectorAll('.service-card')
+        ).map(function (card) {
+          return toServiceData(card);
+        });
+        const localExtraItems = [
+          {
+            imageSrc: 'img/Infomation_Image/information_1.jpg',
+            imageAlt: '健康診断・各種検査のイメージ',
+            title: '健康診断・各種検査',
+            text: '定期健康診断をはじめ、血液検査、尿検査、心電図、超音波検査、レントゲン検査などを行い、病気の早期発見と予防に努めます。異常が見つかった場合は、経過観察や専門治療へとつなげてまいります。'
+          },
+          {
+            imageSrc: 'img/Infomation_Image/information_2.jpg',
+            imageAlt: '予防接種のイメージ',
+            title: '予防接種',
+            text: 'インフルエンザや肺炎球菌などの各種予防接種を行っています。定期的な接種で感染予防と体調管理を支援いたします。予防接種は予約制となりますので、事前にお問い合わせください。'
+          },
+          {
+            imageSrc: 'img/Infomation_Image/information_3.jpg',
+            imageAlt: '禁煙外来のイメージ',
+            title: '禁煙外来',
+            text: '禁煙をご希望の方に、禁煙治療とサポートを行っています。必要に応じて、ニコチン依存症の治療薬を使用し、無理なく禁煙が継続できるようお手伝いいたします。'
+          }
+        ];
+
+        servicesPromise = fetch('dummy.html', { cache: 'no-store' })
+          .then(function (response) {
+            if (!response.ok) throw new Error('failed to load dummy');
+            return response.text();
+          })
+          .then(function (html) {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const extraSelectors = [
+              '#services-section #service-05',
+              '#services-section #service-06',
+              '#services-section #service-07'
+            ];
+            const fallbackImages = [
+              'img/Infomation_Image/information_1.jpg',
+              'img/Infomation_Image/information_2.jpg',
+              'img/Infomation_Image/information_3.jpg'
+            ];
+
+            const extraItems = extraSelectors.map(function (selector, index) {
+              const card = doc.querySelector(selector);
+              if (!card) return null;
+              const titleNode = card.querySelector('.service-title');
+              const textNode = card.querySelector('.service-text');
+              const title = titleNode ? titleNode.textContent.trim() : '';
+              const text = textNode ? textNode.textContent.trim() : '';
+              return {
+                imageSrc: fallbackImages[index % fallbackImages.length],
+                imageAlt: title ? title + 'のイメージ' : '診療内容のイメージ',
+                title: title,
+                text: text
+              };
+            }).filter(function (item) {
+              return Boolean(item && item.title && item.text);
+            });
+
+            if (extraItems.length >= 3) {
+              return topItems.concat(extraItems.slice(0, 3));
+            }
+            return topItems.concat(localExtraItems);
+          })
+          .catch(function () {
+            return topItems.concat(localExtraItems);
+          });
+
+        preloadPromise = servicesPromise.then(function (items) {
+          const imageTasks = items.map(function (item) {
+            return new Promise(function (resolve) {
+              if (!item || !item.imageSrc) {
+                resolve();
+                return;
+              }
+              const img = new Image();
+              img.onload = resolve;
+              img.onerror = resolve;
+              img.src = item.imageSrc;
+            });
+          });
+          return Promise.all(imageTasks).then(function () {
+            return items;
+          });
+        }).catch(function () {
+          return servicesPromise;
+        });
+
+        return preloadPromise;
+      }
+
+      function runSlideAnimation(currentPanel, nextPanel, done) {
+        const duration = 460;
+        const easing = 'ease';
+
+        if (typeof currentPanel.animate === 'function' && typeof nextPanel.animate === 'function') {
+          const outAnim = currentPanel.animate(
+            [{ transform: 'translate3d(0,0,0)' }, { transform: 'translate3d(-100%,0,0)' }],
+            { duration: duration, easing: easing, fill: 'forwards' }
+          );
+          const inAnim = nextPanel.animate(
+            [{ transform: 'translate3d(100%,0,0)' }, { transform: 'translate3d(0,0,0)' }],
+            { duration: duration, easing: easing, fill: 'forwards' }
+          );
+          Promise.all([
+            outAnim.finished.catch(function () { }),
+            inAnim.finished.catch(function () { })
+          ]).then(done);
+          return;
+        }
+
+        currentPanel.style.transition = 'transform 0.46s ease';
+        nextPanel.style.transition = 'transform 0.46s ease';
+        requestAnimationFrame(function () {
+          currentPanel.style.transform = 'translate3d(-100%, 0, 0)';
+          nextPanel.style.transform = 'translate3d(0, 0, 0)';
+        });
+        setTimeout(done, 520);
+      }
+
+      function preparePanelImages(panel) {
+        const images = Array.from(panel.querySelectorAll('img'));
+        const tasks = images.map(function (img) {
+          if (img.complete) {
+            if (typeof img.decode === 'function') {
+              return img.decode().catch(function () { });
+            }
+            return Promise.resolve();
+          }
+          return new Promise(function (resolve) {
+            img.onload = function () {
+              if (typeof img.decode === 'function') {
+                img.decode().catch(function () { }).finally(resolve);
+                return;
+              }
+              resolve();
+            };
+            img.onerror = resolve;
+          });
+        });
+        return Promise.all(tasks);
+      }
+
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (!assetsReady) return;
+        if (isSliding) return;
+
+        isSliding = true;
+        trigger.setAttribute('aria-disabled', 'true');
+
+        loadServices().then(function (items) {
+          if (!items || items.length < 4) {
+            isSliding = false;
+            trigger.removeAttribute('aria-disabled');
+            return;
+          }
+
+          const nextStart = (currentStart + 1) % items.length;
+          const nextItems = pickWindow(items, nextStart, 4);
+          const nextPanel = buildPanel(nextItems);
+          gridWrap.appendChild(nextPanel);
+
+          preparePanelImages(nextPanel).then(function () {
+            syncWrapHeight(activePanel);
+            runSlideAnimation(activePanel, nextPanel, function () {
+              activePanel.remove();
+              nextPanel.classList.remove('is-next');
+              nextPanel.classList.add('is-current');
+              nextPanel.style.transition = '';
+              nextPanel.style.transform = 'translate3d(0, 0, 0)';
+              activePanel = nextPanel;
+              syncWrapHeight(activePanel);
+              currentStart = nextStart;
+              isSliding = false;
+              trigger.removeAttribute('aria-disabled');
+            });
+          }).catch(function () {
+            isSliding = false;
+            trigger.removeAttribute('aria-disabled');
+          });
+        }).catch(function () {
+          isSliding = false;
+          trigger.removeAttribute('aria-disabled');
+        });
+      });
+
+      // Warm up data + images so the first click does not flicker.
+      setTriggerEnabled(false);
+      loadServices().then(function () {
+        assetsReady = true;
+        setTriggerEnabled(true);
+      }).catch(function () {
+        assetsReady = true;
+        setTriggerEnabled(true);
+      });
+      syncWrapHeight(activePanel);
+    })();
+  </script>
+</body>
+
+</html>
