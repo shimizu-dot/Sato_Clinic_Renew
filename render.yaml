@@ -1,4 +1,4 @@
 services:
-  - type: static
+  - type: web
     name: sato-clinic-renew
     staticPublishPath: .
