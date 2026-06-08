@@ -466,6 +466,7 @@
 
     .quick-hours-board {
       width: 100%;
+      max-width: 100%;
       height: auto;
       display: block;
       border-radius: 12px;
@@ -604,9 +605,9 @@
       text-align: center;
       font-weight: 700;
       color: var(--navy);
-      font-size: 18px;
+      font-size: 13px;
       line-height: 1.2;
-      margin: 0 0 16px;
+      margin: 14px 0 12px;
     }
 
     .hours-card {
@@ -641,6 +642,7 @@
 
     .hours-board {
       width: 100%;
+      max-width: 100%;
       height: auto;
       display: block;
       border-radius: 0;
@@ -775,8 +777,9 @@
     .news-more a {
       background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
       border: 1px solid #0f1f36;
-      border-radius: 10px;
-      padding: .3rem .65rem;
+      border-radius: 8px;
+      padding: .18rem .5rem;
+      font-size: .72rem;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .18);
       text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
       font-weight: 500;
@@ -1566,11 +1569,12 @@
       .brand {
         min-width: 0;
         width: 100%;
-        margin-left: 8px;
+        margin-left: 0;
       }
 
       .brand-mark {
-        width: min(240px, 62vw);
+        width: 100%;
+        max-width: 100%;
         height: auto;
       }
 
@@ -1682,6 +1686,16 @@
         padding-right: 0;
       }
 
+      .about-section .container {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .about-lead {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
       .access-grid,
       .staff-list {
         width: 100%;
@@ -1691,8 +1705,19 @@
         padding-bottom: 28px;
       }
 
+      .news-section.section-wrap {
+        padding-bottom: 0;
+      }
+
       .section-body {
         padding-top: 18px;
+      }
+
+      .news-content {
+        height: auto;
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-bottom: 38px;
       }
 
       .news-section .pill[aria-label="ニュース"] {
@@ -1726,11 +1751,12 @@
       }
 
       .message-title {
-        font-size: .8rem;
+        font-size: 1.2rem;
         margin-bottom: 6px;
       }
 
       .message-body p {
+        font-size: 15px;
         margin-bottom: 6px;
       }
 
@@ -1747,9 +1773,34 @@
         padding-bottom: 22px;
       }
 
+      footer.site-footer {
+        box-shadow: -12px 0 0 var(--navy), 12px 0 0 var(--navy);
+      }
+
       .footer-main {
         padding: 10px 0;
         gap: 10px;
+      }
+
+      .footer-brand {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-logo-block {
+        width: 100%;
+      }
+
+      .footer-mark {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .footer-links {
+        margin-left: 0;
+        grid-template-columns: repeat(2, 1fr);
+        font-size: 12px;
+        gap: 6px;
       }
 
       .hero .lead,
@@ -1787,6 +1838,18 @@
       .services-footer-bar,
       .about-footer-bar {
         height: 26px;
+      }
+
+      .about-section .slider {
+        margin: 16px 0 0;
+        border-radius: 0;
+        height: 240px;
+      }
+
+      .about-section .slider img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .staff-photo {
@@ -1834,18 +1897,18 @@
       </a>
 
       <span class="header-actions">
-        <a class="btn btn--gray" href="dummy.html#reservation-section" aria-label="Web予約">Web予約</a>
-        <a class="btn btn--dark" href="#" lang="en" aria-label="English">ENGLISH</a>
+        <a class="btn btn--gray" href="dummy.html#reservation-section" aria-label="Web予約" data-i18n="btn-reservation">Web予約</a>
+        <a class="btn btn--dark" href="#" lang="en" aria-label="English" id="lang-toggle">ENGLISH</a>
       </span>
 
       <nav class="header-nav" id="header-nav" aria-label="グローバルナビゲーション">
-        <a class="header-link--gray" href="#about">当院について</a>
-        <a href="#news">お知らせ</a>
-        <a href="#services">診療内容</a>
-        <a href="#staff">スタッフ紹介</a>
-        <a href="#hours">診療時間</a>
-        <a href="#access">所在地</a>
-        <a href="#contact">お問合せ</a>
+        <a class="header-link--gray" href="#about" data-i18n="nav-about">当院について</a>
+        <a href="#news" data-i18n="nav-news">お知らせ</a>
+        <a href="#services" data-i18n="nav-services">診療内容</a>
+        <a href="#staff" data-i18n="nav-staff">スタッフ紹介</a>
+        <a href="#hours" data-i18n="nav-hours">診療時間</a>
+        <a href="#access" data-i18n="nav-access">所在地</a>
+        <a href="#contact" data-i18n="nav-contact">お問合せ</a>
       </nav>
     </div>
   </header>
@@ -1856,41 +1919,43 @@
       <div class="hero-bg" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <h1>佐藤医院</h1>
-        <p class="tagline">「地域に根ざした医療」をモットーに</p>
+        <h1 data-i18n="hero-name">佐藤医院</h1>
+        <p class="tagline" data-i18n="hero-tagline">「地域に根ざした医療」をモットーに</p>
         <img class="hero-image" src="img/hospital_Image.png" alt="病院外観">
 
         <!-- ※本文は仕様書の文面を流用（改変なし） -->
-        <h3 class="lead lead--mid lead--heading">患者様とともに歩む未来</h3>
-        <p class="lead lead--indented">
+        <h3 class="lead lead--mid lead--heading" data-i18n="hero-heading">患者様とともに歩む未来</h3>
+        <p class="lead lead--indented" data-i18n-html="hero-lead">
           佐藤医院では、患者様の健康を第一に考え、今後も安心・安全な医療を提供し続けます。どんな小さな悩みでも、お気軽にご相談ください。私たちがしっかりとサポートさせていただきます。地域の皆様とともに、より健康で豊かな生活を築いていきたいと考えています。<br><br>
-          佐藤医院のスタッフ一同、皆様のご来院を心よりお待ちしております。
+          　佐藤医院のスタッフ一同、皆様のご来院を心よりお待ちしております。
         </p>
 
         <div class="quick-hours" aria-label="診療時間（クイック表示）">
-          <img class="quick-hours-board" src="img/openingBoard1.png" alt="診療時間のご案内">
-          <a class="btn" href="dummy.html#reservation-section" aria-label="Web予約へ">Web予約</a>
+          <a href="dummy.html#reservation-section" aria-label="Web予約へ">
+            <img class="quick-hours-board" src="img/openingBoard1.png" alt="診療時間のご案内">
+          </a>
         </div>
       </div>
     </section>
 
     <!-- 診療時間 -->
     <section id="hours" class="hours-section section-wrap">
-      <h1 class="section-titlebar">診療時間</h1>
+      <h1 class="section-titlebar" data-i18n="hours-title">診療時間</h1>
 
       <div class="container section-body">
-        <h2 class="hours-sub">患者様中心の医療を提供</h2>
+        <h2 class="hours-sub" data-i18n="hours-sub">患者様中心の医療を提供</h2>
 
         <div class="hours-card" role="group" aria-label="診療時間（詳細）">
-          <img class="hours-board" src="img/openingBoard.jpg" alt="診療時間のご案内">
-          <a class="btn" href="dummy.html#reservation-section" aria-label="Web予約へ">Web予約</a>
+          <a href="dummy.html#reservation-section" aria-label="Web予約へ">
+            <img class="hours-board" src="img/openingBoard.jpg" alt="診療時間のご案内">
+          </a>
         </div>
       </div>
     </section>
 
     <!-- お知らせ -->
     <section id="news" class="news-section section-wrap">
-      <h1 class="section-titlebar">お知らせ</h1>
+      <h1 class="section-titlebar" data-i18n="news-title">お知らせ</h1>
 
       <div class="news-content">
         <div class="news-pill-wrap">
@@ -1900,22 +1965,22 @@
         <div class="container section-body">
           <ul class="news-list" aria-label="お知らせ一覧（最新5件）">
             <li><a class="news-item" href="dummy.html#news-01"><time
-                  datetime="2025-01-01">YY/MM/DD</time><span>インフルエンザ予防接種について</span></a></li>
+                  datetime="2025-01-01">YY/MM/DD</time><span data-i18n="news-1">インフルエンザ予防接種について</span></a></li>
             <li><a class="news-item" href="dummy.html#news-02"><time
-                  datetime="2025-01-01">YY/MM/DD</time><span>年末年始の休診について</span></a></li>
+                  datetime="2025-01-01">YY/MM/DD</time><span data-i18n="news-2">年末年始の休診について</span></a></li>
             <li><a class="news-item" href="dummy.html#news-03"><time
-                  datetime="2025-01-01">YY/MM/DD</time><span>健康診断のご案内</span></a></li>
+                  datetime="2025-01-01">YY/MM/DD</time><span data-i18n="news-3">健康診断のご案内</span></a></li>
             <li><a class="news-item" href="dummy.html#news-04"><time
-                  datetime="2025-01-01">YY/MM/DD</time><span>新型コロナウイルス対策について</span></a></li>
+                  datetime="2025-01-01">YY/MM/DD</time><span data-i18n="news-4">新型コロナウイルス対策について</span></a></li>
             <li><a class="news-item" href="dummy.html#news-online"><time
-                  datetime="2025-01-01">YY/MM/DD</time><span>オンライン診療の導入について</span></a></li>
+                  datetime="2025-01-01">YY/MM/DD</time><span data-i18n="news-5">オンライン診療の導入について</span></a></li>
           </ul>
         </div>
       </div>
 
       <div class="news-footer-bar" aria-hidden="true">
         <div class="news-more">
-          <a href="dummy.html#news-list-section" aria-label="お知らせ一覧へ">お知らせ一覧へ</a>
+          <a href="dummy.html#news-list-section" aria-label="お知らせ一覧へ" data-i18n="news-more">お知らせ一覧へ</a>
         </div>
       </div>
     </section>
@@ -1925,24 +1990,24 @@
       <div class="container">
         <div class="message-grid">
           <div>
-            <h2 class="message-title">院長挨拶</h2>
+            <h2 class="message-title" data-i18n="msg-title">院長挨拶</h2>
 
             <div class="message-body">
-              <p class="message-body__indent message-intro">こんにちは。佐藤医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。</p>
+              <p class="message-body__indent message-intro" data-i18n="msg-intro">こんにちは。佐藤医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。</p>
 
-              <p class="message-body__indent message-paragraph-y">
+              <p class="message-body__indent message-paragraph-y" data-i18n-html="msg-p1">
                 佐藤医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。<span
                   class="message-line-offset">日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。</span>
               </p>
 
-              <p class="message-body__indent">
+              <p class="message-body__indent" data-i18n-html="msg-p2">
                 私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。<span
                   class="message-line-offset">また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。どんな小さな不調でも、どうぞお気軽にご相談ください。</span>
               </p>
 
-              <p>これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。</p>
+              <p data-i18n="msg-p3">　これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。</p>
 
-              <p class="message-sign">佐藤医院　院長　佐藤 太郎</p>
+              <p class="message-sign" data-i18n="msg-sign">佐藤医院　院長　佐藤 太郎</p>
             </div>
           </div>
 
@@ -1953,43 +2018,43 @@
 
     <!-- 診療内容 -->
     <section id="services" class="services-section">
-      <h1 class="section-titlebar section-titlebar--navy">診療内容</h1>
+      <h1 class="section-titlebar section-titlebar--navy" data-i18n="services-title">診療内容</h1>
 
       <div class="container">
-        <h2 class="services-lead">
-          当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。
+        <h2 class="services-lead" data-i18n="services-lead">
+          　当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。
         </h2>
 
         <div class="services-grid-wrap">
           <div class="services-grid services-grid--panel is-current" aria-label="診療内容（4項目）">
           <article class="service-card">
-            <img class="service-media" src="img/Patient_Image/card1Img.png" alt="一般内科診療のイメージ">
-            <h3 class="service-title">一般内科診療</h3>
-            <p class="service-text">
+            <img class="service-media" src="img\infomation_Image\card1Img.png" alt="一般内科診療のイメージ">
+            <h3 class="service-title" data-i18n="svc1-title">一般内科診療</h3>
+            <p class="service-text" data-i18n="svc1-text">
               風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。
             </p>
           </article>
 
           <article class="service-card">
-            <img class="service-media" src="img/Patient_Image/card2Img.png" alt="生活習慣病の診断・治療のイメージ">
-            <h3 class="service-title">生活習慣病の診断・治療</h3>
-            <p class="service-text">
+            <img class="service-media" src="img\infomation_Image\card2Img.png" alt="生活習慣病の診断・治療のイメージ">
+            <h3 class="service-title" data-i18n="svc2-title">生活習慣病の診断・治療</h3>
+            <p class="service-text" data-i18n="svc2-text">
               高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。
             </p>
           </article>
 
           <article class="service-card">
-            <img class="service-media" src="img/Patient_Image/card3Img.png" alt="消化器系の診察のイメージ">
-            <h3 class="service-title">消化器系の診察</h3>
-            <p class="service-text">
+            <img class="service-media" src="img\infomation_Image\card3Img.png" alt="消化器系の診察のイメージ">
+            <h3 class="service-title" data-i18n="svc3-title">消化器系の診察</h3>
+            <p class="service-text" data-i18n="svc3-text">
               胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。
             </p>
           </article>
 
           <article class="service-card">
-            <img class="service-media" src="img/Patient_Image/card4Img.png" alt="呼吸器系の診察のイメージ">
-            <h3 class="service-title">呼吸器系の診察</h3>
-            <p class="service-text">
+            <img class="service-media" src="img\infomation_Image\card4Img.png" alt="呼吸器系の診察のイメージ">
+            <h3 class="service-title" data-i18n="svc4-title">呼吸器系の診察</h3>
+            <p class="service-text" data-i18n="svc4-text">
               咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。
             </p>
           </article>
@@ -2000,18 +2065,18 @@
 
       <div class="services-footer-bar" aria-hidden="true">
         <div class="services-more">
-          <a href="#" aria-label="診療内容を詳しく">詳しく</a>
+          <a href="#" aria-label="診療内容を詳しく" data-i18n="services-more">詳しく</a>
         </div>
       </div>
     </section>
 
     <!-- 当院について -->
     <section id="about" class="about-section">
-      <h1 class="section-titlebar">当医院について</h1>
+      <h1 class="section-titlebar" data-i18n="about-title">当医院について</h1>
 
       <div class="container">
-        <h2 class="about-lead">
-          佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
+        <h2 class="about-lead" data-i18n="about-lead">
+          　佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
         </h2>
 
         <div class="slider" aria-label="院内の様子（スライダー）">
@@ -2020,8 +2085,8 @@
 
         <div class="about-footer-bar" aria-hidden="true">
           <div class="slider-controls" aria-label="スライダー操作">
-            <a href="#" data-slider-action="prev" aria-label="前の画像">◀️ 前へ</a>
-            <a href="#" data-slider-action="next" aria-label="次の画像">次へ ▶️</a>
+            <a href="#" data-slider-action="prev" aria-label="前の画像" data-i18n="slider-prev">◀️ 前へ</a>
+            <a href="#" data-slider-action="next" aria-label="次の画像" data-i18n="slider-next">次へ ▶️</a>
           </div>
         </div>
       </div>
@@ -2029,56 +2094,60 @@
 
     <!-- スタッフ紹介 -->
     <section id="staff" class="staff-section">
-      <h1 class="section-titlebar">スタッフ紹介</h1>
+      <h1 class="section-titlebar" data-i18n="staff-title">スタッフ紹介</h1>
 
       <div class="container">
-        <h2 class="staff-lead">
-          皆様に安心してご来院いただけるよう、私たちスタッフ一同、誠心誠意対応いたします。それぞれの専門性と温かさを活かし、皆様の健康を支えるパートナーとしてお力になれるよう努めてまいります。
+        <h2 class="staff-lead" data-i18n="staff-lead">
+          　皆様に安心してご来院いただけるよう、私たちスタッフ一同、誠心誠意対応いたします。それぞれの専門性と温かさを活かし、皆様の健康を支えるパートナーとしてお力になれるよう努めてまいります。
         </h2>
 
         <div class="staff-list" aria-label="スタッフ一覧">
           <article class="staff-card">
             <img class="staff-photo" src="img/doctor_image/sato_taro.png" alt="院長 佐藤 太郎の写真">
             <div>
-              <h2 class="staff-name">院長　佐藤 太郎</h2>
-              <h3 class="staff-desc">専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
+              <h2 class="staff-name" data-i18n="staff1-name">院長　佐藤 太郎</h2>
+              <h3 class="staff-desc" data-i18n-html="staff1-desc">専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="院長の経歴"
-              data-tooltip="経歴： 光明大学医学部卒業後、瑞穂中央総合病院で内科医として10 年間勤務。">経歴</a>
+              data-tooltip="経歴： 光明大学医学部卒業後、瑞穂中央総合病院で内科医として10 年間勤務。"
+              data-i18n="career-btn" data-i18n-tooltip="staff1-tooltip">経歴</a>
           </article>
 
           <article class="staff-card">
             <img class="staff-photo" src="img/doctor_image/suzuki_mari.png" alt="看護部長 鈴木 真理の写真">
             <div>
-              <h2 class="staff-name">看護部長　鈴木 真理</h2>
-              <h3 class="staff-desc">得意分野：<br> 親身な対応、注射・採血技術、健康管理指導<br><br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。
+              <h2 class="staff-name" data-i18n="staff2-name">看護部長　鈴木 真理</h2>
+              <h3 class="staff-desc" data-i18n-html="staff2-desc">得意分野：<br> 親身な対応、注射・採血技術、健康管理指導<br><br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="看護部長の経歴"
-              data-tooltip="経歴： 白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携 わりたい思いから、佐藤内科医院に入職。">経歴</a>
+              data-tooltip="経歴： 白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携 わりたい思いから、佐藤内科医院に入職。"
+              data-i18n="career-btn" data-i18n-tooltip="staff2-tooltip">経歴</a>
           </article>
 
           <article class="staff-card">
             <img class="staff-photo" src="img/doctor_image/takahashi_yumi.png" alt="臨床検査技師 高橋 由美の写真">
             <div>
-              <h2 class="staff-name">臨床検査技師　高橋 由美</h2>
-              <h3 class="staff-desc">得意分野：<br> 血液検査、心電図検査、超音波検査<br><br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。
+              <h2 class="staff-name" data-i18n="staff3-name">臨床検査技師　高橋 由美</h2>
+              <h3 class="staff-desc" data-i18n-html="staff3-desc">得意分野：<br> 血液検査、心電図検査、超音波検査<br><br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="臨床検査技師の経歴"
-              data-tooltip="経歴：東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。">経歴</a>
+              data-tooltip="経歴：東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。"
+              data-i18n="career-btn" data-i18n-tooltip="staff3-tooltip">経歴</a>
           </article>
 
           <article class="staff-card">
             <img class="staff-photo" src="img/doctor_image/yamamoto_hana.png" alt="医療事務 山本 花の写真">
             <div>
-              <h2 class="staff-name">医療事務　山本 花</h2>
-              <h3 class="staff-desc">得意分野：<br> 受付業務、カルテ管理、医療費計算<br><br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。
+              <h2 class="staff-name" data-i18n="staff4-name">医療事務　山本 花</h2>
+              <h3 class="staff-desc" data-i18n-html="staff4-desc">得意分野：<br> 受付業務、カルテ管理、医療費計算<br><br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="医療事務の経歴"
-              data-tooltip="経歴： 希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。">経歴</a>
+              data-tooltip="経歴： 希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。"
+              data-i18n="career-btn" data-i18n-tooltip="staff4-tooltip">経歴</a>
           </article>
         </div>
       </div>
@@ -2086,22 +2155,22 @@
 
     <!-- アクセス -->
     <section id="access" class="access-section">
-      <h1 class="section-titlebar">アクセス</h1>
+      <h1 class="section-titlebar" data-i18n="access-title">アクセス</h1>
 
       <div class="container">
         <div class="access-grid">
           <img class="map-box" src="img/map.jpg" alt="Googleマップ">
 
           <div class="access-panel" id="contact">
-            <h2>アクセス</h2>
-            <h3>最寄駅: JR 上野より徒歩5 分<br>当院専用の無料駐車場10 台分あり</h3>
-            <h3>ご来院の際は、交通状況にご注意ください。<br>最寄駅から徒歩5 分の距離にあり、便利な立地です。</h3>
+            <h2 data-i18n="access-h2-1">アクセス</h2>
+            <h3 data-i18n-html="access-h3-1">最寄駅: JR 上野より徒歩5 分<br>当院専用の無料駐車場10 台分あり</h3>
+            <h3 data-i18n-html="access-h3-2">ご来院の際は、交通状況にご注意ください。<br>最寄駅から徒歩5 分の距離にあり、便利な立地です。</h3>
 
-            <h2>所在地・住所</h2>
-            <h3>〒123-4567<br>東京都台東区上野0 丁目 0 - 0</h3>
+            <h2 data-i18n="access-h2-2">所在地・住所</h2>
+            <h3 data-i18n-html="access-h3-3">〒123-4567<br>東京都台東区上野0 丁目 0 - 0</h3>
 
-            <h2>お問合せ</h2>
-            <h3>電話番号: 00-0000-0000<br>ファックス: 00-0000-0000<br>E メール: info@sato-clinic-test.jp</h3>
+            <h2 data-i18n="access-h2-3">お問合せ</h2>
+            <h3 data-i18n-html="access-h3-4">電話番号: 00-0000-0000<br>ファックス: 00-0000-0000<br>E メール: info@sato-clinic-test.jp</h3>
           </div>
         </div>
       </div>
@@ -2122,16 +2191,16 @@
             </div>
           </div>
           <div>
-            <div style="font-weight:700; font-size:1.1rem; margin-left: 24px;">サイトメニュー</div>
+            <div style="font-weight:700; font-size:1rem;" data-i18n="footer-menu">サイトメニュー</div>
             <nav class="footer-links" aria-label="フッターリンク">
-              <a href="#top">トップページ</a>
-              <a href="#news">お知らせ</a>
-              <a href="#message">院長の挨拶</a>
-              <a href="#about">当院について</a>
-              <a href="#services">診療内容</a>
-              <a href="#staff">スタッフ紹介</a>
-              <a href="#access">アクセス</a>
-              <a href="#contact">お問合せ</a>
+              <a href="#top" data-i18n="footer-top">トップページ</a>
+              <a href="#news" data-i18n="footer-news">お知らせ</a>
+              <a href="#message" data-i18n="footer-message">院長の挨拶</a>
+              <a href="#about" data-i18n="footer-about">当院について</a>
+              <a href="#services" data-i18n="footer-services">診療内容</a>
+              <a href="#staff" data-i18n="footer-staff">スタッフ紹介</a>
+              <a href="#access" data-i18n="footer-access">アクセス</a>
+              <a href="#contact" data-i18n="footer-contact">お問合せ</a>
               <a href="dummy.html#faq-section" aria-label="FAQページへ">FAQ</a>
             </nav>
           </div>
@@ -2140,7 +2209,6 @@
 
       <div>
         <div class="footer-banner">
-          <a class="btn" href="dummy.html#reservation-section" aria-label="Web予約へ">Web予約</a>
         </div>
       </div>
     </div>
@@ -2149,6 +2217,131 @@
   </footer>
 
   <script>
+    (function () {
+      const translations = {
+        ja: {
+          'btn-reservation': 'Web予約',
+          'nav-about': '当院について', 'nav-news': 'お知らせ', 'nav-services': '診療内容',
+          'nav-staff': 'スタッフ紹介', 'nav-hours': '診療時間', 'nav-access': '所在地', 'nav-contact': 'お問合せ',
+          'hero-name': '佐藤医院', 'hero-tagline': '「地域に根ざした医療」をモットーに',
+          'hero-heading': '患者様とともに歩む未来',
+          'hero-lead': '佐藤医院では、患者様の健康を第一に考え、今後も安心・安全な医療を提供し続けます。どんな小さな悩みでも、お気軽にご相談ください。私たちがしっかりとサポートさせていただきます。地域の皆様とともに、より健康で豊かな生活を築いていきたいと考えています。<br><br>　佐藤医院のスタッフ一同、皆様のご来院を心よりお待ちしております。',
+          'hours-title': '診療時間', 'hours-sub': '患者様中心の医療を提供',
+          'news-title': 'お知らせ', 'news-more': 'お知らせ一覧へ',
+          'news-1': 'インフルエンザ予防接種について', 'news-2': '年末年始の休診について',
+          'news-3': '健康診断のご案内', 'news-4': '新型コロナウイルス対策について',
+          'news-5': 'オンライン診療の導入について',
+          'msg-title': '院長挨拶',
+          'msg-intro': 'こんにちは。佐藤医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。',
+          'msg-p1': '佐藤医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。<span class="message-line-offset">日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。</span>',
+          'msg-p2': '私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。<span class="message-line-offset">また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。どんな小さな不調でも、どうぞお気軽にご相談ください。</span>',
+          'msg-p3': '　これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。',
+          'msg-sign': '佐藤医院　院長　佐藤 太郎',
+          'services-title': '診療内容', 'services-lead': '　当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。',
+          'svc1-title': '一般内科診療', 'svc1-text': '風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。',
+          'svc2-title': '生活習慣病の診断・治療', 'svc2-text': '高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。',
+          'svc3-title': '消化器系の診察', 'svc3-text': '胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。',
+          'svc4-title': '呼吸器系の診察', 'svc4-text': '咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。',
+          'services-more': '詳しく',
+          'about-title': '当医院について', 'about-lead': '　佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。',
+          'slider-prev': '◀️ 前へ', 'slider-next': '次へ ▶️',
+          'staff-title': 'スタッフ紹介', 'staff-lead': '　皆様に安心してご来院いただけるよう、私たちスタッフ一同、誠心誠意対応いたします。それぞれの専門性と温かさを活かし、皆様の健康を支えるパートナーとしてお力になれるよう努めてまいります。',
+          'staff1-name': '院長　佐藤 太郎', 'staff1-desc': '専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。',
+          'staff2-name': '看護部長　鈴木 真理', 'staff2-desc': '得意分野：<br> 親身な対応、注射・採血技術、健康管理指導<br><br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。',
+          'staff3-name': '臨床検査技師　高橋 由美', 'staff3-desc': '得意分野：<br> 血液検査、心電図検査、超音波検査<br><br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。',
+          'staff4-name': '医療事務　山本 花', 'staff4-desc': '得意分野：<br> 受付業務、カルテ管理、医療費計算<br><br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。',
+          'career-btn': '経歴',
+          'staff1-tooltip': '経歴： 光明大学医学部卒業後、瑞穂中央総合病院で内科医として10 年間勤務。',
+          'staff2-tooltip': '経歴： 白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携 わりたい思いから、佐藤内科医院に入職。',
+          'staff3-tooltip': '経歴：東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。',
+          'staff4-tooltip': '経歴： 希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。',
+          'access-title': 'アクセス', 'access-h2-1': 'アクセス',
+          'access-h3-1': '最寄駅: JR 上野より徒歩5 分<br>当院専用の無料駐車場10 台分あり',
+          'access-h3-2': 'ご来院の際は、交通状況にご注意ください。<br>最寄駅から徒歩5 分の距離にあり、便利な立地です。',
+          'access-h2-2': '所在地・住所', 'access-h3-3': '〒123-4567<br>東京都台東区上野0 丁目 0 - 0',
+          'access-h2-3': 'お問合せ', 'access-h3-4': '電話番号: 00-0000-0000<br>ファックス: 00-0000-0000<br>E メール: info@sato-clinic-test.jp',
+          'footer-menu': 'サイトメニュー', 'footer-top': 'トップページ', 'footer-news': 'お知らせ',
+          'footer-message': '院長の挨拶', 'footer-about': '当院について', 'footer-services': '診療内容',
+          'footer-staff': 'スタッフ紹介', 'footer-access': 'アクセス', 'footer-contact': 'お問合せ'
+        },
+        en: {
+          'btn-reservation': 'Book Online',
+          'nav-about': 'About Us', 'nav-news': 'News', 'nav-services': 'Services',
+          'nav-staff': 'Staff', 'nav-hours': 'Hours', 'nav-access': 'Location', 'nav-contact': 'Contact',
+          'hero-name': 'Sato Clinic', 'hero-tagline': 'Community-Rooted Healthcare',
+          'hero-heading': 'A Future We Walk Together with Our Patients',
+          'hero-lead': 'At Sato Clinic, we put our patients\' health first and are committed to providing safe, reliable medical care. No matter how small your concern, please feel free to consult us — we are here to support you. We look forward to building a healthier, more fulfilling life together with everyone in our community.<br><br>All of our staff warmly welcome your visit.',
+          'hours-title': 'Hours', 'hours-sub': 'Patient-Centered Care',
+          'news-title': 'News', 'news-more': 'All News',
+          'news-1': 'About Influenza Vaccinations', 'news-2': 'Year-End & New Year Holiday Closures',
+          'news-3': 'Health Checkup Information', 'news-4': 'COVID-19 Measures',
+          'news-5': 'Introduction of Online Consultations',
+          'msg-title': "Director's Message",
+          'msg-intro': 'Hello. I am Taro Sato, Director of Sato Clinic. Thank you for visiting our website.',
+          'msg-p1': 'At Sato Clinic, our motto is "community-rooted healthcare," and we are dedicated to providing care that is tailored to each individual patient. <span class="message-line-offset">From everyday health management and lifestyle disease prevention to specialized diagnosis and treatment, we aim to offer a broad range of internal medicine services to support the health of our community.</span>',
+          'msg-p2': 'We strive to ease our patients\' concerns and ensure a comfortable experience through clear explanations and attentive care. <span class="message-line-offset">We also collaborate with neighboring medical institutions to support access to advanced care when needed. Please do not hesitate to consult us, no matter how minor your symptoms.</span>',
+          'msg-p3': 'Going forward, we will continue to prioritize our patients\' health and work together as a team to remain a trusted healthcare provider in our community. Thank you for your continued support.',
+          'msg-sign': 'Sato Clinic — Director: Taro Sato',
+          'services-title': 'Services', 'services-lead': 'Our clinic offers a broad range of internal medicine services to support the health of our community — from routine health management to various examinations and treatments. Please feel free to consult us about any concern.',
+          'svc1-title': 'General Internal Medicine', 'svc1-text': 'We treat common ailments such as colds, fever, sore throat, headache, and abdominal pain. We also strive for early diagnosis even for unexplained symptoms or mild conditions.',
+          'svc2-title': 'Lifestyle Disease Diagnosis & Treatment', 'svc2-text': 'We diagnose and treat lifestyle-related diseases including hypertension, diabetes, dyslipidemia (high cholesterol), and metabolic syndrome. We provide lifestyle guidance and pharmacotherapy to prevent disease progression and maintain health.',
+          'svc3-title': 'Gastrointestinal Examinations', 'svc3-text': 'We address gastrointestinal issues such as stomach pain, indigestion, heartburn, constipation, and diarrhea. Endoscopy and ultrasound examinations are available as needed to support digestive health.',
+          'svc4-title': 'Respiratory Examinations', 'svc4-text': 'We examine respiratory symptoms including cough, shortness of breath, and chest pain. We also treat seasonal asthma, allergic rhinitis, and chronic obstructive pulmonary disease (COPD), providing appropriate treatment and prevention.',
+          'services-more': 'Details',
+          'about-title': 'About Our Clinic', 'about-lead': 'Our mission at Sato Clinic is to protect the health of our community and support a better quality of life. Since our founding, we have valued "care tailored to each patient" and have provided community-rooted medical services. We promise to continue delivering better medical care to contribute to your health and disease prevention.',
+          'slider-prev': '◀️ Prev', 'slider-next': 'Next ▶️',
+          'staff-title': 'Our Staff', 'staff-lead': 'All of our staff are dedicated to making every visit comfortable and reassuring. Combining professional expertise with genuine warmth, we strive to be your trusted partners in health.',
+          'staff1-name': 'Director: Taro Sato', 'staff1-desc': 'Specialty:<br> Lifestyle diseases, respiratory diseases, general internal medicine<br><br>I aim to be a "family doctor" whom patients can consult freely about any concern. Please do not hesitate to reach out, no matter how small your worry.',
+          'staff2-name': 'Head Nurse: Mari Suzuki', 'staff2-desc': 'Strengths:<br> Compassionate care, injection & blood draw skills, health guidance<br><br>I am always here with a smile to ensure you feel at ease during your treatment. Please feel free to ask me anything, however small.',
+          'staff3-name': 'Clinical Lab Technician: Yumi Takahashi', 'staff3-desc': 'Strengths:<br> Blood tests, electrocardiography, ultrasound examinations<br><br>Examinations can feel anxiety-inducing, but I make every effort to help you relax with gentle and attentive care.',
+          'staff4-name': 'Medical Office: Hana Yamamoto', 'staff4-desc': 'Strengths:<br> Reception, medical record management, medical fee calculation<br><br>I treasure a warm smile and sincere hospitality to make every visit pleasant. First-time visitors are always welcome.',
+          'career-btn': 'Career',
+          'staff1-tooltip': 'Career: After graduating from Komei University School of Medicine, served as an internist at Mizuho Central General Hospital for 10 years.',
+          'staff2-tooltip': 'Career: After graduating from Hakuo University School of Nursing, worked at Midorigaoka University Hospital for 10 years before joining Sato Clinic with a passion for community medicine.',
+          'staff3-tooltip': 'Career: After graduating from Toto Clinical Laboratory Technology School, gained 15 years of experience as a clinical laboratory technician at Musashi Central Medical Center.',
+          'staff4-tooltip': 'Career: After graduating from Kibou Medical College, handled reception at Sakura Clinic. Currently manages patient services at Sato Clinic.',
+          'access-title': 'Access', 'access-h2-1': 'Getting Here',
+          'access-h3-1': 'Nearest Station: 5-min walk from JR Ueno<br>Free parking for 10 cars available',
+          'access-h3-2': 'Please be aware of traffic conditions when visiting.<br>Conveniently located just 5 minutes\' walk from the nearest station.',
+          'access-h2-2': 'Address', 'access-h3-3': '〒123-4567<br>0-0-0 Ueno, Taito-ku, Tokyo',
+          'access-h2-3': 'Contact', 'access-h3-4': 'Phone: 00-0000-0000<br>Fax: 00-0000-0000<br>Email: info@sato-clinic-test.jp',
+          'footer-menu': 'Site Menu', 'footer-top': 'Home', 'footer-news': 'News',
+          'footer-message': "Director's Message", 'footer-about': 'About Us', 'footer-services': 'Services',
+          'footer-staff': 'Staff', 'footer-access': 'Access', 'footer-contact': 'Contact'
+        }
+      };
+
+      let currentLang = 'ja';
+
+      function applyLanguage(lang) {
+        const t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          const key = el.dataset.i18n;
+          if (t[key] !== undefined) el.textContent = t[key];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+          const key = el.dataset.i18nHtml;
+          if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+        document.querySelectorAll('[data-i18n-tooltip]').forEach(function (el) {
+          const key = el.dataset.i18nTooltip;
+          if (t[key] !== undefined) el.dataset.tooltip = t[key];
+        });
+        const btn = document.getElementById('lang-toggle');
+        if (btn) btn.textContent = lang === 'ja' ? 'ENGLISH' : '日本語';
+        document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+      }
+
+      const langBtn = document.getElementById('lang-toggle');
+      if (langBtn) {
+        langBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          currentLang = currentLang === 'ja' ? 'en' : 'ja';
+          applyLanguage(currentLang);
+        });
+      }
+    })();
+
     (function () {
       const toggle = document.querySelector('.menu-toggle');
       const menu = document.getElementById('header-nav');
@@ -2198,7 +2391,7 @@
 
       let index = 1;
       const min = 1;
-      const max = 8;
+      const max = 5;
 
       function updateImage() {
         sliderImage.src = 'img/Hospital_Exterior/hospital_' + index + '.png';
@@ -2457,19 +2650,19 @@
         });
         const localExtraItems = [
           {
-            imageSrc: 'img/Infomation_Image/information_1.jpg',
+            imageSrc: 'img/Infomation_Image/card5Img.png',
             imageAlt: '健康診断・各種検査のイメージ',
             title: '健康診断・各種検査',
             text: '定期健康診断をはじめ、血液検査、尿検査、心電図、超音波検査、レントゲン検査などを行い、病気の早期発見と予防に努めます。異常が見つかった場合は、経過観察や専門治療へとつなげてまいります。'
           },
           {
-            imageSrc: 'img/Infomation_Image/information_2.jpg',
+            imageSrc: 'img/Infomation_Image/card6Img.png',
             imageAlt: '予防接種のイメージ',
             title: '予防接種',
             text: 'インフルエンザや肺炎球菌などの各種予防接種を行っています。定期的な接種で感染予防と体調管理を支援いたします。予防接種は予約制となりますので、事前にお問い合わせください。'
           },
           {
-            imageSrc: 'img/Infomation_Image/information_3.jpg',
+            imageSrc: 'img/Infomation_Image/card7Img.png',
             imageAlt: '禁煙外来のイメージ',
             title: '禁煙外来',
             text: '禁煙をご希望の方に、禁煙治療とサポートを行っています。必要に応じて、ニコチン依存症の治療薬を使用し、無理なく禁煙が継続できるようお手伝いいたします。'
@@ -2489,9 +2682,9 @@
               '#services-section #service-07'
             ];
             const fallbackImages = [
-              'img/Infomation_Image/information_1.jpg',
-              'img/Infomation_Image/information_2.jpg',
-              'img/Infomation_Image/information_3.jpg'
+              'img/Infomation_Image/card1Img.png',
+              'img/Infomation_Image/card2Img.png',
+              'img/Infomation_Image/card3Img.png'
             ];
 
             const extraItems = extraSelectors.map(function (selector, index) {
