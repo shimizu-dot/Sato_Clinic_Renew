@@ -82,7 +82,7 @@
     }
 
     img {
-      max-width: 100%;
+      max-width: 80%;
       height: auto;
       display: block
     }
@@ -239,9 +239,9 @@
     .header-inner {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 12px;
       height: 100px;
       padding: 0;
       position: relative;
@@ -252,7 +252,8 @@
       align-items: center;
       gap: 8px;
       min-width: 120px;
-      flex-basis: 100%;
+      flex-basis: auto;
+      margin-left: 12px;
     }
 
     .brand-mark {
@@ -264,21 +265,18 @@
 
     .menu-toggle {
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       gap: 4px;
       width: 48px;
       height: 42px;
-      margin-left: auto;
       border: 1px solid #0f1f36;
       border-radius: 10px;
       background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
       box-shadow: 0 4px 0 #091325, 0 8px 14px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .9);
       color: #000;
-      order: 2;
       margin-left: 0;
-      align-self: flex-start;
     }
 
     .menu-toggle:hover {
@@ -292,7 +290,7 @@
 
     .menu-toggle__line {
       display: block;
-      width: 16px;
+      width: 18px;
       height: 2px;
       border-radius: 999px;
       background: #0f1f36;
@@ -300,21 +298,21 @@
     }
 
     .header-nav {
+      margin-left: auto;
       display: none;
-      position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
-      z-index: 60;
-      width: min(520px, calc(100vw - 20px));
-      padding: 12px;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 14px;
-      background: rgba(31, 58, 95, .98);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       color: #fff;
+      flex: 1;
+      position: static;
+      width: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .header-nav.is-open {
@@ -342,11 +340,13 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-left: 0;
+      margin-left: auto;
       margin-right: 0;
-      order: 3;
-      flex-basis: 100%;
-      justify-content: flex-start;
+      padding-right: 16px;
+      box-sizing: border-box;
+      order: 0;
+      flex-basis: auto;
+      justify-content: flex-end;
     }
 
     .header-actions .btn {
@@ -403,10 +403,10 @@
     }
 
     .hero-image {
-      width: 100%;
-      max-width: 720px;
+      width: min(560px, calc(100% - 32px));
+      max-width: 560px;
       height: auto;
-      margin: 20px auto 22px;
+      margin: 30px auto 32px;
       border-radius: 12px;
       opacity: 1;
       object-fit: contain;
@@ -423,9 +423,12 @@
     }
 
     .hero .tagline {
-      margin: .7rem 0 1.5rem;
-      font-size: 1.4rem;
+      margin: .55rem 0 1.2rem;
+      font-size: 1rem;
       font-weight: 700;
+      line-height: 1.15;
+      white-space: nowrap;
+      letter-spacing: 0;
     }
 
     .hero .lead {
@@ -601,8 +604,9 @@
       text-align: center;
       font-weight: 700;
       color: var(--navy);
-      font-size: 28px;
-      margin: 0 0 22px;
+      font-size: 18px;
+      line-height: 1.2;
+      margin: 0 0 16px;
     }
 
     .hours-card {
@@ -662,16 +666,22 @@
 
     .news-section .pill[aria-label="ニュース"] {
       background: var(--dcream);
-      width: 192px;
-      height: 76px;
+      width: auto;
+      height: auto;
+      min-width: 0;
+      min-height: 0;
       border-radius: 0;
-      padding: 0;
+      padding: .15em .55em;
       color: var(--navy);
-      font-size: 3rem;
+      font-size: 2rem;
       line-height: 1;
       letter-spacing: .04em;
       border: 1px solid #b7ac9b;
       box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -2px 4px rgba(255, 255, 255, .6);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
 
     .news-section .pill[aria-label="ニュース"] .news-text {
@@ -680,7 +690,7 @@
     }
 
     .news-section .news-list {
-      margin-top: 56px;
+      margin-top: 14px;
     }
 
     @keyframes news-text-pulse {
@@ -704,7 +714,7 @@
     }
 
     .news-content {
-      height: calc(100% - 53px - 40px);
+      height: calc(100% - 53px - 30px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -713,11 +723,11 @@
 
     .news-list {
       width: 100%;
-      margin: 20px auto 0;
+      margin: 14px auto 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 12px;
+      gap: 8px;
     }
 
     .news-section .section-body {
@@ -730,18 +740,18 @@
       background: var(--white);
       border: 1px solid #bdbdbd;
       border-radius: 10px;
-      padding: 10px 14px;
+      padding: 5px 8px;
       font-weight: 700;
-      font-size: 1.28rem;
+      font-size: .85rem;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
     }
 
     .news-item time {
       font-variant-numeric: tabular-nums;
       color: #333;
-      min-width: 96px;
+      min-width: 76px;
     }
 
     .news-footer-bar {
@@ -750,14 +760,14 @@
       right: 0;
       bottom: 0;
       width: min(1440px, 100%);
-      height: 40px;
+      height: 30px;
       margin: 0 auto;
       background: var(--navy);
     }
 
     .news-more {
       position: absolute;
-      right: 16px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -766,7 +776,7 @@
       background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
       border: 1px solid #0f1f36;
       border-radius: 10px;
-      padding: .4rem .8rem;
+      padding: .3rem .65rem;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .18);
       text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
       font-weight: 500;
@@ -801,8 +811,8 @@
 
     .message-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      grid-template-columns: 1fr;
+      gap: 18px;
       align-items: start;
     }
 
@@ -812,23 +822,29 @@
       top: 0;
       width: 100%;
       height: auto;
+      padding-inline: 8px;
+      box-sizing: border-box;
     }
 
     .message-title {
-      font-size: 24px;
-      margin: 0 0 16px;
+      font-size: 18px;
+      margin: 0 0 10px;
       font-weight: 700;
       text-shadow: 0 4px 8px rgba(0, 0, 0, .28);
     }
 
     .message-body {
-      font-size: 13px;
+      font-size: 12px;
       color: #222;
-      line-height: 1.7;
+      line-height: 1.6;
+      padding: 0 6px;
+      box-sizing: border-box;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
     .message-body p {
-      margin: 0 0 14px;
+      margin: 0 0 10px;
     }
 
     .message-body p:last-child {
@@ -840,7 +856,9 @@
     }
 
     .message-body .message-intro {
-      font-size: 16px;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
     }
 
     .message-paragraph-y {
@@ -855,8 +873,8 @@
     }
 
     .message-sign {
-      margin-top: 18px;
-      font-weight: 700;
+      margin-top: 0px;
+      font-weight: 680;
       text-align: right;
     }
 
@@ -865,7 +883,9 @@
       top: 0;
       align-self: start;
       height: auto;
+      width: min(260px, 100%);
       max-width: 100%;
+      margin: 0 auto;
       border-radius: 10px;
       object-fit: cover;
     }
@@ -894,11 +914,11 @@
     }
 
     .services-lead {
-      margin: 0 0 16px;
+      margin: 16px 16px 16px;
       font-weight: 700;
       text-indent: 0;
       color: var(--navy);
-      font-size: 14px;
+      font-size: 10px;
       line-height: 1.6;
     }
 
@@ -942,7 +962,9 @@
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      min-height: 420px;
+      min-height: auto;
+      max-width: 260px;
+      margin-inline: auto;
     }
 
     .service-media {
@@ -950,6 +972,7 @@
       background: var(--gray);
       border-bottom: 1px solid #dcdcdc;
       width: 100%;
+      max-width: 100%;
       object-fit: cover;
     }
 
@@ -999,8 +1022,9 @@
     .services-more a {
       background: linear-gradient(180deg, #ffffff 0%, #dfe8f8 100%);
       border: 1px solid #0f1f36;
-      border-radius: 10px;
-      padding: .32rem .85rem;
+      border-radius: 8px;
+      padding: .18rem .55rem;
+      font-size: .78rem;
       font-weight: 700;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 2px 8px rgba(0, 0, 0, .22);
       text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
@@ -1158,7 +1182,7 @@
       grid-template-columns: 1fr;
       gap: 12px;
       align-items: start;
-      padding: 14px;
+      padding: 14px 14px 36px;
       position: relative;
       height: auto;
       min-height: auto;
@@ -1178,7 +1202,7 @@
     .staff-photo {
       width: 100%;
       height: auto;
-      max-height: 240px;
+      max-height: 360px;
       border-radius: 8px;
       background: var(--gray);
       border: 1px solid #cfcfcf;
@@ -1206,9 +1230,9 @@
     .staff-card .btn {
       position: absolute;
       right: 12px;
-      bottom: 8px;
-      padding: .3rem .9rem;
-      font-size: 1rem;
+      bottom: 10px;
+      padding: .18rem .6rem;
+      font-size: .78rem;
       font-weight: 500;
       border: 1px solid #0f1f36;
       border-radius: 10px;
@@ -1235,10 +1259,11 @@
     .career-tooltip-btn::after {
       content: attr(data-tooltip);
       position: absolute;
-      right: 0;
+      right: auto;
+      left: -200px;
       bottom: calc(100% + 10px);
       width: max-content;
-      max-width: min(92vw, 560px);
+      max-width: min(72vw, 260px);
       white-space: normal;
       word-break: break-word;
       padding: 10px 12px;
@@ -1259,7 +1284,7 @@
     .career-tooltip-btn::before {
       content: "";
       position: absolute;
-      right: 18px;
+      right: 14px;
       bottom: calc(100% + 2px);
       border: 8px solid transparent;
       border-top-color: var(--cream);
@@ -1492,239 +1517,6 @@
       font-size: 18px;
     }
 
-    /* responsive */
-    @media (max-width: 980px) {
-      header.site-header {
-        position: static;
-        min-height: auto;
-      }
-
-      .header-inner {
-        height: auto;
-        padding: 10px 0 12px;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .brand {
-        min-width: 0;
-      }
-
-      .brand-mark {
-        width: min(240px, 62vw);
-        height: auto;
-      }
-
-      .header-actions {
-        margin: 0;
-      }
-
-      .hero,
-      .hours-section,
-      .news-section,
-      .message-section,
-      .services-section,
-      .about-section {
-        min-height: auto;
-      }
-
-      .message-section {
-        height: auto;
-        padding: 28px 0 36px;
-      }
-
-      .message-grid {
-        grid-template-columns: 1fr
-      }
-
-      .message-grid>div {
-        position: static;
-        left: auto;
-        top: auto;
-        width: auto;
-        height: auto;
-      }
-
-      .message-body {
-        position: static;
-        left: auto;
-        top: auto;
-        width: auto;
-        height: auto;
-      }
-
-      .message-photo {
-        position: static;
-        top: auto;
-        width: 100%;
-        max-width: 420px;
-        height: auto;
-        object-fit: contain;
-        margin: 10px auto 0;
-      }
-
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .services-section .container {
-        justify-content: flex-start;
-        transform: none;
-      }
-
-      .about-lead,
-      .staff-lead {
-        margin: 40px auto 18px;
-      }
-
-      .slider {
-        margin-top: 24px;
-        height: min(56vw, 420px);
-      }
-
-      .about-footer-bar {
-        height: 36px;
-      }
-
-      .staff-card {
-        grid-template-columns: 1fr;
-        text-align: left;
-        height: auto;
-        min-height: 220px;
-      }
-
-      .staff-name {
-        font-size: 24px;
-      }
-
-      .staff-desc {
-        font-size: 18px;
-      }
-
-      .staff-photo {
-        width: 100%;
-        height: auto;
-        max-height: 360px;
-        border-radius: 18px;
-        object-fit: contain;
-        background: #f4f4f4;
-      }
-
-      .access-section .container {
-        padding-top: 52px;
-        padding-bottom: 52px;
-      }
-
-      .access-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-      }
-
-      .map-box {
-        width: 100%;
-        height: min(60vw, 380px);
-      }
-
-      .access-panel {
-        width: 100%;
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr
-      }
-
-      .footer-brand {
-        flex-direction: column;
-      }
-
-      .footer-links {
-        margin-left: 0;
-      }
-
-      .footer-banner {
-        width: 100%;
-        margin-top: 8px;
-      }
-
-      .footer-banner .btn {
-        transform: translate(-50%, 74%);
-      }
-
-      .footer-banner .btn:hover {
-        transform: translate(-50%, calc(74% - 1px));
-      }
-
-      .footer-banner .btn:active {
-        transform: translate(-50%, calc(74% + 2px));
-      }
-    }
-
-    @media (max-width: 560px) {
-      .header-inner {
-        padding: 8px 0 10px;
-      }
-
-      .header-nav {
-        width: 100%;
-      }
-
-      .header-nav a {
-        text-align: center;
-        font-size: 13px;
-      }
-
-      .header-actions {
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .header-actions .btn {
-        font-size: .86rem;
-        padding: .42rem .65rem;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr
-      }
-
-      .hero h1 {
-        font-size: 2rem
-      }
-
-      .section-titlebar {
-        font-size: 1.55rem
-      }
-
-      .services-lead,
-      .about-lead,
-      .staff-lead,
-      .service-text,
-      .message-body p,
-      .access-panel h3 {
-        font-size: 15px;
-        line-height: 1.7;
-      }
-
-      .staff-name {
-        font-size: 20px;
-      }
-
-      .slider-controls a {
-        font-size: .78rem;
-      }
-
-      .footer-social img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .footer-bottom {
-        font-size: .78rem;
-      }
-    }
-
-    @media (max-width: 430px) {
       html,
       body {
         overflow-x: auto;
@@ -1742,29 +1534,222 @@
       body {
         width: 393px;
         min-width: 393px;
+        box-sizing: border-box;
+        padding: 0 24px;
         margin: 0 auto;
       }
 
       .container {
-        width: 393px;
-        max-width: 393px;
+        width: 100%;
+        max-width: 100%;
       }
 
       .site-header .container {
-        width: 393px;
-        max-width: 393px;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      header.site-header {
+        position: static;
+        min-height: auto;
+      }
+
+      .header-inner {
+        height: auto;
+        padding: 10px 0 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .brand {
+        min-width: 0;
+        width: 100%;
+        margin-left: 8px;
+      }
+
+      .brand-mark {
+        width: min(240px, 62vw);
+        height: auto;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        order: 2;
+        margin-left: 8px;
+        align-self: flex-start;
+      }
+
+      .header-actions {
+        order: 3;
+        flex-basis: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: 0;
+        padding-right: 16px;
+        box-sizing: border-box;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .header-nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        z-index: 60;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, .18);
+        border-radius: 14px;
+        background: rgba(31, 58, 95, .98);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 8px;
+        color: #fff;
+        text-align: left;
+      }
+
+      .header-nav.is-open {
+        display: flex;
+      }
+
+      .header-nav a {
+        width: 100%;
+        text-align: left;
+      }
+
+      section,
+      .section-wrap,
+      .hours-section,
+      .news-section,
+      .message-section,
+      .services-section,
+      .about-section,
+      .staff-section,
+      .access-section,
+      footer.site-footer {
+        width: calc(100% - 24px);
+        margin-inline: auto;
+      }
+
+      .section-titlebar {
+        width: calc(100% - 24px);
+        margin-inline: auto;
+        height: 28px;
+        font-size: .8rem;
+        line-height: 1;
+        letter-spacing: .02em;
       }
 
       .hero-content {
-        padding: 26px 14px 30px;
+        width: calc(100% - 8px);
+        margin-inline: auto;
+        padding: 18px 10px 18px;
       }
 
       .hero h1 {
-        font-size: 1.62rem;
+        font-size: 1.45rem;
       }
 
       .hero-image {
-        margin: 16px auto 18px;
+        width: min(500px, calc(100% - 40px));
+        max-width: 500px;
+        margin: 28px auto 30px;
+      }
+
+      .news-content,
+      .services-section .container,
+      .staff-section .container,
+      .access-section .container,
+      .footer-main,
+      .news-section .section-body {
+        width: calc(100% - 12px);
+        margin-inline: auto;
+      }
+
+      .services-section .container,
+      .staff-section .container,
+      .access-section .container,
+      .footer-main {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .access-grid,
+      .staff-list {
+        width: 100%;
+      }
+
+      .section-wrap {
+        padding-bottom: 28px;
+      }
+
+      .section-body {
+        padding-top: 18px;
+      }
+
+      .news-section .pill[aria-label="ニュース"] {
+        width: auto;
+        height: auto;
+        padding: .16em .5em;
+        font-size: 0.8rem;
+      }
+
+      .news-section .news-list {
+        margin-top: 12px;
+        gap: 6px;
+      }
+
+      .news-item {
+        padding: 4px 7px;
+        font-size: .6rem;
+        gap: 5px;
+      }
+
+      .news-item time {
+        min-width: 60px;
+      }
+
+      .message-section {
+        padding: 16px 0 18px;
+      }
+
+      .message-grid>div {
+        padding-inline: 10px;
+      }
+
+      .message-title {
+        font-size: .8rem;
+        margin-bottom: 6px;
+      }
+
+      .message-body p {
+        margin-bottom: 6px;
+      }
+
+      .services-section {
+        padding-bottom: 44px;
+      }
+
+      .staff-section .container {
+        padding-bottom: 22px;
+      }
+
+      .access-section .container {
+        padding-top: 22px;
+        padding-bottom: 22px;
+      }
+
+      .footer-main {
+        padding: 10px 0;
+        gap: 10px;
       }
 
       .hero .lead,
@@ -1774,8 +1759,8 @@
       .service-text,
       .message-body p,
       .access-panel h3 {
-        font-size: 13px;
-        line-height: 1.6;
+        font-size: 12px;
+        line-height: 1.55;
       }
 
       .tagline,
@@ -1783,34 +1768,30 @@
       .news-item,
       .header-nav a,
       .header-actions .btn {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       h2 {
-        font-size: 1.35rem;
+        font-size: 1.15rem;
       }
 
       h3 {
-        font-size: 1rem;
+        font-size: .9rem;
       }
 
       .message-photo {
-        max-width: 360px;
-      }
-
-      .section-titlebar {
-        font-size: 1.4rem;
-        letter-spacing: .02em;
+        width: min(240px, 100%);
+        max-width: 240px;
       }
 
       .services-footer-bar,
       .about-footer-bar {
-        height: 34px;
+        height: 26px;
       }
 
       .staff-photo {
         height: auto;
-        max-height: 320px;
+        max-height: 460px;
       }
 
       .slider {
@@ -1834,7 +1815,6 @@
         font-size: .9rem;
         padding: .4rem .75rem;
       }
-    }
   </style>
 </head>
 
@@ -1948,10 +1928,10 @@
             <h2 class="message-title">院長挨拶</h2>
 
             <div class="message-body">
-              <p class="message-body__indent message-intro">こんにちは。佐藤医院の院長、佐藤太郎と申します。<br>当院のホームページをご覧いただき、ありがとうございます。</p>
+              <p class="message-body__indent message-intro">こんにちは。佐藤医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。</p>
 
               <p class="message-body__indent message-paragraph-y">
-                佐藤医院では、「地域に根ざした医療」をモットーに、<br>患者様一人ひとりに寄り添った医療を提供することを目指しております。<span
+                佐藤医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。<span
                   class="message-line-offset">日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。</span>
               </p>
 
@@ -1999,7 +1979,7 @@
           </article>
 
           <article class="service-card">
-            <img class="service-media" src="img/Patient_Image/patient_4 1.png" alt="消化器系の診察のイメージ">
+            <img class="service-media" src="img/Patient_Image/card3Img.png" alt="消化器系の診察のイメージ">
             <h3 class="service-title">消化器系の診察</h3>
             <p class="service-text">
               胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。
@@ -2007,7 +1987,7 @@
           </article>
 
           <article class="service-card">
-            <img class="service-media" src="img/Patient_Image/patient_6 1.png" alt="呼吸器系の診察のイメージ">
+            <img class="service-media" src="img/Patient_Image/card4Img.png" alt="呼吸器系の診察のイメージ">
             <h3 class="service-title">呼吸器系の診察</h3>
             <p class="service-text">
               咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。
@@ -2035,7 +2015,7 @@
         </h2>
 
         <div class="slider" aria-label="院内の様子（スライダー）">
-          <img id="about-slider-image" src="img/Hospital_Exterior/hospital_4.jpg" alt="院内の様子 1">
+          <img id="about-slider-image" src="img/Hospital_Exterior/hospital_1.png" alt="院内の様子 1">
         </div>
 
         <div class="about-footer-bar" aria-hidden="true">
@@ -2061,7 +2041,7 @@
             <img class="staff-photo" src="img/doctor_image/sato_taro.png" alt="院長 佐藤 太郎の写真">
             <div>
               <h2 class="staff-name">院長　佐藤 太郎</h2>
-              <h3 class="staff-desc">専門分野： 生活習慣病、呼吸器疾患、内科全般<br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
+              <h3 class="staff-desc">専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="院長の経歴"
@@ -2072,7 +2052,7 @@
             <img class="staff-photo" src="img/doctor_image/suzuki_mari.png" alt="看護部長 鈴木 真理の写真">
             <div>
               <h2 class="staff-name">看護部長　鈴木 真理</h2>
-              <h3 class="staff-desc">得意分野： 親身な対応、注射・採血技術、健康管理指導<br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。
+              <h3 class="staff-desc">得意分野：<br> 親身な対応、注射・採血技術、健康管理指導<br><br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="看護部長の経歴"
@@ -2083,18 +2063,18 @@
             <img class="staff-photo" src="img/doctor_image/takahashi_yumi.png" alt="臨床検査技師 高橋 由美の写真">
             <div>
               <h2 class="staff-name">臨床検査技師　高橋 由美</h2>
-              <h3 class="staff-desc">得意分野： 血液検査、心電図検査、超音波検査<br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。
+              <h3 class="staff-desc">得意分野：<br> 血液検査、心電図検査、超音波検査<br><br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="臨床検査技師の経歴"
-              data-tooltip="経歴： 東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15 年 間の臨床検査技師としての経験を積む。">経歴</a>
+              data-tooltip="経歴：東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。">経歴</a>
           </article>
 
           <article class="staff-card">
             <img class="staff-photo" src="img/doctor_image/yamamoto_hana.png" alt="医療事務 山本 花の写真">
             <div>
               <h2 class="staff-name">医療事務　山本 花</h2>
-              <h3 class="staff-desc">得意分野： 受付業務、カルテ管理、医療費計算<br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。
+              <h3 class="staff-desc">得意分野：<br> 受付業務、カルテ管理、医療費計算<br><br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。
               </h3>
             </div>
             <a class="btn career-tooltip-btn js-career-tooltip" href="#" aria-label="医療事務の経歴"
@@ -2221,7 +2201,7 @@
       const max = 8;
 
       function updateImage() {
-        sliderImage.src = 'img/Hospital_Exterior/hospital_' + index + '.jpg';
+        sliderImage.src = 'img/Hospital_Exterior/hospital_' + index + '.png';
         sliderImage.alt = '院内の様子 ' + index;
       }
 
