@@ -27,7 +27,9 @@
     html, body { overflow-x: auto }
 
     html {
-      background: var(--gray);
+      background-color: #5500aa;
+      background-image: radial-gradient(circle, #c094e0 30%, transparent 31%);
+      background-size: 28px 28px;
       font-size: 14px;
     }
 
@@ -36,7 +38,9 @@
       width: 393px;
       min-width: 393px;
       font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
-      background: var(--gray);
+      background-color: #5500aa;
+      background-image: radial-gradient(circle, #c094e0 30%, transparent 31%);
+      background-size: 28px 28px;
       color: var(--text);
       font-size: 14px;
       line-height: 1.55;
@@ -419,6 +423,41 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 10px;
+    }
+
+    /* ── anime decorations ── */
+    @keyframes sparkle-rise {
+      0%   { opacity: 0; transform: translateY(0)     scale(0)  rotate(0deg); }
+      15%  { opacity: 1; transform: translateY(-15px) scale(1)  rotate(45deg); }
+      85%  { opacity: .8; transform: translateY(-90px) scale(.8) rotate(315deg); }
+      100% { opacity: 0; transform: translateY(-120px) scale(0) rotate(360deg); }
+    }
+
+    @keyframes rainbow-hue {
+      0%   { filter: hue-rotate(0deg)   brightness(1.15); }
+      100% { filter: hue-rotate(360deg) brightness(1.15); }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(180,80,255,.5), inset 0 1px 0 rgba(255,255,255,.32); }
+      50%      { box-shadow: 0 0 18px rgba(180,80,255,.9), 0 0 32px rgba(100,200,255,.4), inset 0 1px 0 rgba(255,255,255,.32); }
+    }
+
+    .sparkle-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      line-height: 1;
+      user-select: none;
+      animation: sparkle-rise var(--dur, 2s) ease-out forwards;
+    }
+
+    .header {
+      animation: rainbow-hue 5s linear infinite;
+    }
+
+    .sub-header {
+      animation: glow-pulse 2.4s ease-in-out infinite;
     }
 
     .news-more,
@@ -804,6 +843,29 @@
           applyLanguage(currentLang);
         });
       }
+    })();
+
+    (() => {
+      const SYMBOLS = ['✦', '✧', '⋆', '✩', '★', '✫', '✬'];
+      const COLORS  = ['#ffe040', '#ff80c0', '#80d8ff', '#ce93d8', '#f8bbd0', '#ffffff', '#b3e5fc'];
+
+      function spawn() {
+        const el = document.createElement('span');
+        el.className = 'sparkle-particle';
+        el.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+        const x   = Math.random() * 96 + 2;
+        const y   = Math.random() * 80 + 10;
+        const dur = (1.2 + Math.random() * 1.8).toFixed(2);
+        const sz  = (18 + Math.random() * 20).toFixed(1);
+        const col = COLORS[Math.floor(Math.random() * COLORS.length)];
+        el.style.cssText =
+          `left:${x}vw;top:${y}vh;font-size:${sz}px;color:${col};` +
+          `--dur:${dur}s;text-shadow:0 0 6px ${col};`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000);
+      }
+
+      setInterval(spawn, 280);
     })();
   </script>
 </body>

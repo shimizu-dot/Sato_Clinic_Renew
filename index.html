@@ -40,14 +40,18 @@
     }
 
     html {
-      background: var(--gray);
+      background-color: #5500aa;
+      background-image: radial-gradient(circle, #c094e0 30%, transparent 31%);
+      background-size: 28px 28px;
     }
 
     body {
       margin: 0;
       font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
       color: var(--text);
-      background: var(--gray);
+      background-color: #5500aa;
+      background-image: radial-gradient(circle, #c094e0 30%, transparent 31%);
+      background-size: 28px 28px;
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -1878,6 +1882,53 @@
         font-size: .9rem;
         padding: .4rem .75rem;
       }
+
+    /* ── anime decorations ── */
+    @keyframes sparkle-rise {
+      0%   { opacity: 0; transform: translateY(0)    scale(0)   rotate(0deg); }
+      15%  { opacity: 1; transform: translateY(-15px) scale(1)   rotate(45deg); }
+      85%  { opacity: .8; transform: translateY(-90px) scale(.8)  rotate(315deg); }
+      100% { opacity: 0; transform: translateY(-120px) scale(0)  rotate(360deg); }
+    }
+
+    @keyframes rainbow-hue {
+      0%   { filter: hue-rotate(0deg)   brightness(1.15); }
+      100% { filter: hue-rotate(360deg) brightness(1.15); }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(180, 80, 255, .5), inset 0 1px 0 rgba(255,255,255,.35); }
+      50%      { box-shadow: 0 0 18px rgba(180, 80, 255, .9), 0 0 32px rgba(100, 200, 255, .4), inset 0 1px 0 rgba(255,255,255,.35); }
+    }
+
+    @keyframes btn-shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    .sparkle-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      line-height: 1;
+      user-select: none;
+      animation: sparkle-rise var(--dur, 2s) ease-out forwards;
+    }
+
+    .section-titlebar {
+      animation: glow-pulse 2.4s ease-in-out infinite;
+    }
+
+    .site-header {
+      animation: rainbow-hue 5s linear infinite;
+    }
+
+    .btn--dark {
+      background-image: linear-gradient(90deg,
+        #1f3a5f 0%, #4a7fc1 40%, #c084fc 60%, #1f3a5f 100%);
+      background-size: 200% auto;
+      animation: btn-shimmer 2.5s linear infinite;
+    }
   </style>
 </head>
 
@@ -2842,6 +2893,29 @@
         setTriggerEnabled(true);
       });
       syncWrapHeight(activePanel);
+    })();
+
+    (function () {
+      const SYMBOLS = ['✦', '✧', '⋆', '✩', '★', '✫', '✬'];
+      const COLORS  = ['#ffe040', '#ff80c0', '#80d8ff', '#ce93d8', '#f8bbd0', '#ffffff', '#b3e5fc'];
+
+      function spawn() {
+        const el = document.createElement('span');
+        el.className = 'sparkle-particle';
+        el.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+        const x   = Math.random() * 96 + 2;
+        const y   = Math.random() * 80 + 10;
+        const dur = (1.2 + Math.random() * 1.8).toFixed(2);
+        const sz  = (18 + Math.random() * 20).toFixed(1);
+        const col = COLORS[Math.floor(Math.random() * COLORS.length)];
+        el.style.cssText =
+          `left:${x}vw;top:${y}vh;font-size:${sz}px;color:${col};` +
+          `--dur:${dur}s;text-shadow:0 0 6px ${col};`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000);
+      }
+
+      setInterval(spawn, 280);
     })();
   </script>
 </body>
