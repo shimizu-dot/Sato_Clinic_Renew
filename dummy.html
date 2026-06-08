@@ -53,9 +53,28 @@
     h3 { font-size: .9rem; font-weight: 400 }
 
     .page {
+      position: relative;
       width: 100%;
-      background: var(--cream);
       min-height: 100vh;
+      background-color: var(--cream);
+      overflow: hidden;
+    }
+
+    .cloud-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .section-top-band,
+    .header,
+    .inner,
+    .news-footer-wrap {
+      position: relative;
+      z-index: 1;
     }
 
     .section-top-band { height: 4px; background: var(--navy) }
@@ -219,9 +238,9 @@
       width: 100%;
     }
 
-    .services-grid .service-card:nth-child(1) .service-media { background-image: url('img\infomation_Image\card5Img.png') }
-    .services-grid .service-card:nth-child(2) .service-media { background-image: url('img\infomation_Image\card6Img.png') }
-    .services-grid .service-card:nth-child(3) .service-media { background-image: url('img\infomation_Image\card7Img.png') }
+    .services-grid .service-card:nth-child(1) .service-media { background-image: url('img/infomation_Image/card5Img.png') }
+    .services-grid .service-card:nth-child(2) .service-media { background-image: url('img/infomation_Image/card6Img.png') }
+    .services-grid .service-card:nth-child(3) .service-media { background-image: url('img/infomation_Image/card7Img.png') }
 
     .service-title {
       margin: 10px 10px 0;
@@ -479,6 +498,22 @@
 </head>
 <body>
   <div class="page" id="top">
+    <svg class="cloud-bg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <filter id="cloud-filter" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence id="cloud-warp" type="fractalNoise" baseFrequency="0.004 0.005" numOctaves="2" seed="9" result="warp-noise"/>
+          <feTurbulence id="cloud-main" type="fractalNoise" baseFrequency="0.007 0.011" numOctaves="6" seed="3" result="cloud-noise"/>
+          <feDisplacementMap in="cloud-noise" in2="warp-noise" scale="90" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+          <feColorMatrix type="matrix"
+            values="0 0 0 0 0.86
+                    0 0 0 0 0.79
+                    0 0 0 0 0.72
+                    0 0 0 5 -2.8"
+            in="warped"/>
+        </filter>
+      </defs>
+      <rect width="100%" height="100%" filter="url(#cloud-filter)"/>
+    </svg>
     <div class="section-top-band"></div>
     <h1 class="header">
       <span data-i18n="page-title">お知らせ一覧</span>
@@ -704,24 +739,6 @@
   </div>
   <script>
     (() => {
-      const mediaEls = document.querySelectorAll("#services-section .service-media");
-      if (!mediaEls.length) return;
-
-      const pool = [
-        "img\infomation_Image\card1Img.png",
-        "img\Infomation_Image\card2Img.png",
-        "img\Infomation_Image\card3Img.png",
-        "img\Infomation_Image\card4Img.png",
-      ];
-
-      const shuffled = [...pool].sort(() => Math.random() - 0.5);
-      mediaEls.forEach((el, index) => {
-        const path = shuffled[index % shuffled.length];
-        el.style.backgroundImage = `url('${path}')`;
-      });
-    })();
-
-    (() => {
       const translations = {
         ja: {
           'page-title': 'お知らせ一覧',
@@ -866,6 +883,25 @@
       }
 
       setInterval(spawn, 280);
+    })();
+
+    /* cloud turbulence animation */
+    (function() {
+      const main = document.getElementById('cloud-main');
+      const warp = document.getElementById('cloud-warp');
+      if (!main || !warp) return;
+      let phase = 0;
+      function tick() {
+        phase += 0.00035;
+        const m1 = (0.0065 + Math.sin(phase * 0.9)  * 0.0025).toFixed(6);
+        const m2 = (0.0105 + Math.cos(phase * 0.55) * 0.003).toFixed(6);
+        main.setAttribute('baseFrequency', m1 + ' ' + m2);
+        const w1 = (0.0038 + Math.sin(phase * 1.4)  * 0.0012).toFixed(6);
+        const w2 = (0.0050 + Math.cos(phase * 1.1)  * 0.0015).toFixed(6);
+        warp.setAttribute('baseFrequency', w1 + ' ' + w2);
+        requestAnimationFrame(tick);
+      }
+      tick();
     })();
   </script>
 </body>
