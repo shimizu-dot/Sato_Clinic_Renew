@@ -263,8 +263,51 @@
     .brand-mark {
       width: 120px;
       height: auto;
-      background: var(--cream);
+      background: transparent;
       object-fit: contain;
+      transform-origin: center center;
+      will-change: transform, opacity;
+    }
+
+    .brand-mark.is-intro {
+      animation: brand-mark-intro 1200ms cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    @keyframes brand-mark-intro {
+      0% {
+        opacity: 0;
+        transform: scale(.15) rotate(-900deg);
+      }
+
+      22% {
+        opacity: 1;
+        transform: scale(1.22) rotate(1800deg);
+      }
+
+      36% {
+        opacity: 1;
+        transform: scale(1) rotate(2880deg);
+      }
+
+      52% {
+        opacity: 1;
+        transform: scale(.04) rotate(2880deg);
+      }
+
+      74% {
+        opacity: 1;
+        transform: scale(.66) rotate(2880deg);
+      }
+
+      90% {
+        opacity: 1;
+        transform: scale(1.06) rotate(2880deg);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(2880deg);
+      }
     }
 
     .menu-toggle {
@@ -1418,7 +1461,7 @@
     .footer-mark {
       width: 160px;
       height: auto;
-      background: #fff;
+      background: transparent;
       object-fit: contain;
     }
 
@@ -1942,6 +1985,12 @@
       background-size: 200% auto;
       animation: btn-shimmer 2.5s linear infinite;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .brand-mark.is-intro {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
@@ -2073,7 +2122,7 @@
             <h2 class="message-title" data-i18n="msg-title">院長挨拶</h2>
 
             <div class="message-body">
-              <p class="message-body__indent message-intro" data-i18n="msg-intro">こんにちは。佐藤医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。</p>
+              <p class="message-body__indent message-intro" data-i18n="msg-intro">こんにちは。佐藤医院の院長、佐藤条太郎と申します。当院のホームページをご覧いただき、ありがとうございます。</p>
 
               <p class="message-body__indent message-paragraph-y" data-i18n-html="msg-p1">
                 佐藤医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。<span
@@ -2087,11 +2136,11 @@
 
               <p data-i18n="msg-p3">　これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。</p>
 
-              <p class="message-sign" data-i18n="msg-sign">佐藤医院　院長　佐藤 太郎</p>
+              <p class="message-sign" data-i18n="msg-sign">佐藤医院　院長　佐藤 条太郎</p>
             </div>
           </div>
 
-          <img class="message-photo" src="img/doctor_image/doctor_intro.png" alt="院長 佐藤 太郎の写真">
+          <img class="message-photo" src="img/doctor_image/doctor_intro.png" alt="院長 佐藤 条太郎の写真">
         </div>
       </div>
     </section>
@@ -2183,9 +2232,9 @@
 
         <div class="staff-list" aria-label="スタッフ一覧">
           <article class="staff-card">
-            <img class="staff-photo" src="img/doctor_image/sato_taro.png" alt="院長 佐藤 太郎の写真">
+            <img class="staff-photo" src="img/doctor_image/sato_taro.png" alt="院長 佐藤 条太郎の写真">
             <div>
-              <h2 class="staff-name" data-i18n="staff1-name">院長　佐藤 太郎</h2>
+              <h2 class="staff-name" data-i18n="staff1-name">院長　佐藤 条太郎</h2>
               <h3 class="staff-desc" data-i18n-html="staff1-desc">専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
               </h3>
             </div>
@@ -2312,11 +2361,11 @@
           'news-3': '健康診断のご案内', 'news-4': '新型コロナウイルス対策について',
           'news-5': 'オンライン診療の導入について',
           'msg-title': '院長挨拶',
-          'msg-intro': 'こんにちは。佐藤医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。',
+          'msg-intro': 'こんにちは。佐藤医院の院長、佐藤条太郎と申します。当院のホームページをご覧いただき、ありがとうございます。',
           'msg-p1': '佐藤医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。<span class="message-line-offset">日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。</span>',
           'msg-p2': '私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。<span class="message-line-offset">また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。どんな小さな不調でも、どうぞお気軽にご相談ください。</span>',
           'msg-p3': '　これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。',
-          'msg-sign': '佐藤医院　院長　佐藤 太郎',
+          'msg-sign': '佐藤医院　院長　佐藤 条太郎',
           'services-title': '診療内容', 'services-lead': '　当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。',
           'svc1-title': '一般内科診療', 'svc1-text': '風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。',
           'svc2-title': '生活習慣病の診断・治療', 'svc2-text': '高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。',
@@ -2326,7 +2375,7 @@
           'about-title': '当医院について', 'about-lead': '　佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。',
           'slider-prev': '◀️ 前へ', 'slider-next': '次へ ▶️',
           'staff-title': 'スタッフ紹介', 'staff-lead': '　皆様に安心してご来院いただけるよう、私たちスタッフ一同、誠心誠意対応いたします。それぞれの専門性と温かさを活かし、皆様の健康を支えるパートナーとしてお力になれるよう努めてまいります。',
-          'staff1-name': '院長　佐藤 太郎', 'staff1-desc': '専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。',
+          'staff1-name': '院長　佐藤 条太郎', 'staff1-desc': '専門分野：<br> 生活習慣病、呼吸器疾患、内科全般<br><br>患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。',
           'staff2-name': '看護部長　鈴木 真理', 'staff2-desc': '得意分野：<br> 親身な対応、注射・採血技術、健康管理指導<br><br>安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。',
           'staff3-name': '臨床検査技師　高橋 由美', 'staff3-desc': '得意分野：<br> 血液検査、心電図検査、超音波検査<br><br>検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。',
           'staff4-name': '医療事務　山本 花', 'staff4-desc': '得意分野：<br> 受付業務、カルテ管理、医療費計算<br><br>皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。',
@@ -2465,13 +2514,28 @@
     })();
 
     (function () {
+      const logo = document.querySelector('.brand-mark');
+      if (!logo) return;
+
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          logo.classList.add('is-intro');
+        });
+      });
+    })();
+
+    (function () {
       const sliderImage = document.getElementById('about-slider-image');
       const controls = document.querySelectorAll('[data-slider-action]');
       if (!sliderImage || controls.length === 0) return;
 
       let index = 1;
       const min = 1;
-      const max = 5;
+      const max = 7;
 
       function updateImage() {
         sliderImage.src = 'img/Hospital_Exterior/hospital_' + index + '.png';
